@@ -36,26 +36,52 @@
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
 </head>
 
 <style>
-.supermarket_section_title .title_text {
-    font-family: "Lexend Deca", Arial, Helvetica, sans-serif;
-    font-size: 40px;
-}s
+    .supermarket_product_item .product_label li {
+        height: 25px;
+        font-size: 12px;
+        padding: 0 10px;
+        /* give some breathing space */
+        line-height: 25px;
+        text-align: center;
+        border-radius: 3px;
 
-.supermarket_deals_item .item_title a{
-  font-size: 20px;
-}
-.home_supermarket h1, .home_supermarket h2, .home_supermarket h3, .home_supermarket h4, .home_supermarket h5, .home_supermarket h6 {
-font-family: "Lexend Deca", Arial, Helvetica, sans-serif;
-}
-  .supermarket_tab_nav a:hover, .supermarket_tab_nav a.active {
-  color: #333e48;
-  background-color: #ffffff;
-  border-color: #000000;
-}
+        display: inline-block;
+        /* important */
+        width: auto;
+        /* content-based width */
+        min-width: unset;
+        /* remove fixed constraint */
+    }
+
+    .supermarket_section_title .title_text {
+        font-family: "Lexend Deca", Arial, Helvetica, sans-serif;
+        font-size: 40px;
+    }
+
+    s .supermarket_deals_item .item_title a {
+        font-size: 20px;
+    }
+
+    .home_supermarket h1,
+    .home_supermarket h2,
+    .home_supermarket h3,
+    .home_supermarket h4,
+    .home_supermarket h5,
+    .home_supermarket h6 {
+        font-family: "Lexend Deca", Arial, Helvetica, sans-serif;
+    }
+
+    .supermarket_tab_nav a:hover,
+    .supermarket_tab_nav a.active {
+        color: #333e48;
+        background-color: #ffffff;
+        border-color: #000000;
+    }
+
     .koko_wrap {
         display: flex;
         align-items: center;
@@ -274,6 +300,8 @@ font-family: "Lexend Deca", Arial, Helvetica, sans-serif;
         text-align: center;
         padding-bottom: 0px !important;
     }
+    
+    
 
     .sidebar_mobile_menu {
         margin-top: -63px;
@@ -299,8 +327,10 @@ font-family: "Lexend Deca", Arial, Helvetica, sans-serif;
         position: relative;
         width: 100%;
         overflow: hidden;
-        border-radius: 10px;
+       border-radius: 10px ;
     }
+    
+    
 
     .bg_video {
         width: 100%;
@@ -506,92 +536,99 @@ font-family: "Lexend Deca", Arial, Helvetica, sans-serif;
     <!-- header_section - start
   ================================================== -->
     <header class="header_section supermarket_header bg-white clearfix">
+
+        {{-- TOP BAR --}}
         <div class="header_top text-white clearfix">
             <div class="container maxw_1460">
                 <div class="row align-items-center justify-content-lg-between">
+
                     <div class="col-lg-5">
                         <p class="welcome_text mb-0">Luxury In Every Touch</p>
                     </div>
 
                     <div class="col-lg-7">
                         <ul class="info_list ul_li_right clearfix">
-                            <li><a href="#!"><i class="fal fa-map-marker-alt"></i> Store Locator</a></li>
-                            <li><a href="#!"><i class="fal fa-truck"></i> Track Your Order</a></li>
+                            <li>
+                                <a href="#!">
+                                    <i class="fal fa-map-marker-alt"></i> Store Locator
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#!">
+                                    <i class="fal fa-truck"></i> Track Your Order
+                                </a>
+                            </li>
                             <li>
                                 <form action="#">
                                     <div class="currency_select option_select mb-0">
                                         <select>
-                                            <option value="USD" selected>LKR</option>
-
+                                            <option value="LKR" selected>LKR</option>
                                         </select>
                                     </div>
                                 </form>
                             </li>
                         </ul>
                     </div>
+
                 </div>
             </div>
         </div>
 
+        {{-- MIDDLE HEADER --}}
         <div class="header_middle clearfix">
             <div class="container maxw_1460">
                 <div class="row align-items-center justify-content-lg-between">
+
+                    {{-- LOGO --}}
                     <div class="col-lg-3">
                         <div class="brand_logo">
-                            <a class="brand_link" href="/">
-                                <img src="assets/images/logo/fonivo2.png" srcset="assets/images/logo/fonivo2.png"
-                                    class="logo_img" alt="logo_not_found" style="height: 60px;">
+
+                            <a class="brand_link" href="{{ url('/') }}">
+                                <img src="{{ asset('assets/images/logo/fonivo2.png') }}" class="logo_img" alt="logo"
+                                    style="height: 60px;">
                             </a>
 
                             <ul class="mh_action_btns ul_li clearfix">
-                                {{-- <li>
-                                    <button type="button" class="search_btn" data-toggle="collapse"
-                                        data-target="#search_body_collapse" aria-expanded="false"
-                                        aria-controls="search_body_collapse">
-                                        <i class="fal fa-search"></i>
-                                    </button>
-                                </li> --}}
                                 <li>
-                                    <button type="button" class="cart_btn" onclick="window.location.href='/contact'"
-                                        title="Contact Support">
-                                        <i class="fal fa-headset" style="font-size: 25px; font-wight: 400;"></i>
+                                    <button type="button" class="cart_btn"
+                                        onclick="window.location.href='{{ url('/contact') }}'" title="Contact Support">
+                                        <i class="fal fa-headset" style="font-size: 25px;"></i>
                                     </button>
                                 </li>
-                                <li><button type="button" class="mobile_menu_btn"><i class="far fa-bars"
-                                            style="font-size: 25px; font-wight: 400;"></i></button>
+
+                                <li>
+                                    <button type="button" class="mobile_menu_btn">
+                                        <i class="far fa-bars" style="font-size: 25px;"></i>
+                                    </button>
                                 </li>
                             </ul>
+
                         </div>
                     </div>
 
+                    {{-- MENU --}}
                     <div class="col-lg-6">
-                        <div class="container maxw_1460">
-                            <nav class="main_menu d-flex justify-content-center">
-                                <ul class="ul_li d-flex justify-content-center align-items-center">
+                        <nav class="main_menu d-flex justify-content-center">
+                            <ul class="ul_li d-flex justify-content-center align-items-center">
 
-                                    <li>
-                                        <a href="#!">Home</a>
+                                <li><a href="{{ url('/') }}">Home</a></li>
 
-                                    </li>
-                                    <li>
-                                        <a href="#!">Phones</a>
+                                <li>
+                                    <a href="{{ route('products.index') }}">Phones</a>
+                                </li>
 
+                                <li><a href="#!">Accessories</a></li>
+                                <li><a href="#!">About us</a></li>
+                                <li><a href="{{ url('/contact') }}">Contact us</a></li>
 
-                                    </li>
-                                    <li>
-                                        <a href="#!">Accessories</a>
-
-                                    </li>
-                                    <li><a href="#!">About us</a></li>
-                                    <li><a href="/contact">Contact us</a></li>
-                                </ul>
-                            </nav>
-                        </div>
+                            </ul>
+                        </nav>
                     </div>
 
-
+                    {{-- RIGHT ACTION --}}
                     <div class="col-lg-3">
                         <div class="supermarket_header_btns clearfix">
+
                             <ul class="action_btns_group ul_li_right clearfix">
                                 <li>
                                     <button type="button">
@@ -599,22 +636,20 @@ font-family: "Lexend Deca", Arial, Helvetica, sans-serif;
                                         <strong>Help?</strong>
                                     </button>
                                 </li>
-                                {{-- <li>
-                                    <button type="button">
-                                        <span>Shop</span>
-                                        <strong>Smart Deals</strong>
-                                    </button>
-                                </li> --}}
+
                                 <li>
-                                    <button type="button" class="cart_btn" onclick="window.location.href='/contact'">
+                                    <button type="button" class="cart_btn"
+                                        onclick="window.location.href='{{ url('/contact') }}'">
                                         <i class="fal fa-headset"></i>
                                     </button>
                                 </li>
                             </ul>
-                            <span class="alart_text float-right  fonivo-note">
+
+                            <span class="alart_text float-right fonivo-note">
                                 <small>✔</small>
                                 Trusted service!
                             </span>
+
                         </div>
                     </div>
 
@@ -622,20 +657,22 @@ font-family: "Lexend Deca", Arial, Helvetica, sans-serif;
             </div>
         </div>
 
-
-
+        {{-- SEARCH --}}
         <div id="search_body_collapse" class="search_body_collapse collapse">
             <div class="search_body">
                 <div class="container-fluid prl_90">
                     <form action="#">
                         <div class="form_item mb-0">
                             <input type="search" name="search" placeholder="Type here...">
-                            <button type="submit"><i class="fal fa-search"></i></button>
+                            <button type="submit">
+                                <i class="fal fa-search"></i>
+                            </button>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
+
     </header>
     <!-- header_section - end
   ================================================== -->
@@ -648,58 +685,73 @@ font-family: "Lexend Deca", Arial, Helvetica, sans-serif;
 
         <!-- sidebar mobile menu & sidebar cart - start
    ================================================== -->
-        <div class="sidebar_mobile_menu">
-            <button type="button" class="close_btn"><i class="fal fa-times"></i></button>
+     <div class="sidebar_mobile_menu">
 
-            <div class="msb_widget brand_logo text-center">
-                <a href="index.html">
-                    <img src="assets/images/logo/fonivo2.png" alt="Fonivo Logo" style="max-height: 70px;">
-                </a>
-            </div>
+    {{-- CLOSE BUTTON --}}
+    <button type="button" class="close_btn">
+        <i class="fal fa-times"></i>
+    </button>
 
-            <div class="msb_widget mobile_menu_list clearfix">
-                <h3 class="title_text mb_15 text-uppercase">
-                    {{-- <i class="far fa-bars mr-2"> --}}
-                    </i> Menu List
-                </h3>
+    {{-- LOGO --}}
+    <div class="msb_widget brand_logo text-center">
+        <a href="{{ url('/') }}">
+            <img src="{{ asset('assets/images/logo/fonivo2.png') }}"
+                 alt="Fonivo Logo"
+                 style="max-height: 70px;">
+        </a>
+    </div>
 
-                <ul class="ul_li_block clearfix fonivo_mobile_nav">
-                    <li><a href="/"><i class="fal fa-home mr-2"></i> Home</a></li>
-                    <li><a href="#!"><i class="fal fa-mobile-alt mr-2"></i> Phones</a></li>
-                    <li><a href="#!"><i class="fal fa-headphones-alt mr-2"></i> Accessories</a></li>
-                    <li><a href="#!"><i class="fal fa-info-circle mr-2"></i> About Us</a></li>
-                    <li><a href="/contact"><i class="fal fa-envelope mr-2"></i> Contact Us</a></li>
-                </ul>
-            </div>
+    {{-- MENU --}}
+    <div class="msb_widget mobile_menu_list clearfix">
 
-            {{-- <div class="msb_widget fonivo_mobile_actions">
         <h3 class="title_text mb_15 text-uppercase">
-            <i class="fal fa-bolt mr-2"></i> Quick Access
+            Menu List
         </h3>
 
-        <ul class="ul_li_block clearfix">
-            <li>
-                <a href="/contact">
-                    <i class="fal fa-headset mr-2"></i> Need Help?
-                </a>
-            </li>
-            <li>
-                <a href="/shop">
-                    <i class="fal fa-tags mr-2"></i> Smart Deals
-                </a>
-            </li>
-            <li>
-                <a href="/contact">
-                    <i class="fal fa-tools mr-2"></i> Support Service
-                </a>
-            </li>
-        </ul>
-    </div> --}}
+        <ul class="ul_li_block clearfix fonivo_mobile_nav">
 
-            <div class="msb_widget fonivo_mobile_note">
-                <span><i class="fas fa-check-circle mr-1"></i> Genuine trusted service!</span>
-            </div>
-        </div>
+            <li>
+                <a href="{{ url('/') }}">
+                    <i class="fal fa-home mr-2"></i> Home
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ route('products.index') }}">
+                    <i class="fal fa-mobile-alt mr-2"></i> Phones
+                </a>
+            </li>
+
+            <li>
+                <a href="#!">
+                    <i class="fal fa-headphones-alt mr-2"></i> Accessories
+                </a>
+            </li>
+
+            <li>
+                <a href="#!">
+                    <i class="fal fa-info-circle mr-2"></i> About Us
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ url('/contact') }}">
+                    <i class="fal fa-envelope mr-2"></i> Contact Us
+                </a>
+            </li>
+
+        </ul>
+    </div>
+
+    {{-- NOTE --}}
+    <div class="msb_widget fonivo_mobile_note">
+        <span>
+            <i class="fas fa-check-circle mr-1"></i>
+            Genuine trusted service!
+        </span>
+    </div>
+
+</div>
         <!-- sidebar mobile menu & sidebar cart - end
    ================================================== -->
 
@@ -707,12 +759,12 @@ font-family: "Lexend Deca", Arial, Helvetica, sans-serif;
         <!-- slider_section - start
    ================================================== -->
         <section class="video_banner" style="background-color: #ffffff; padding: 40px 0;">
-            <div class="container">
+            <div class="container ">
 
                 <!-- Video Background -->
                 <div class="video_wrapper">
                     <video autoplay muted loop playsinline class="bg_video">
-                        <source src="{{ asset('assets/videos/banner4.mp4') }}" type="video/mp4">
+                        <source src="{{ asset('assets/videos/banner6.mp4') }}" type="video/mp4">
                     </video>
 
                     <!-- Overlay -->
@@ -899,7 +951,8 @@ font-family: "Lexend Deca", Arial, Helvetica, sans-serif;
                 </div>
 
                 <div class="supermarket_deals_carousel position-relative clearfix">
-                    <div class="slideshow5_slider row clearfix" data-slick='{
+                    <div class="slideshow5_slider row clearfix"
+                        data-slick='{
     "dots": false,
     "arrows": true,
     "autoplay": true,
@@ -1085,240 +1138,62 @@ font-family: "Lexend Deca", Arial, Helvetica, sans-serif;
 
                                 <ul class="supermarket_product_columns has_4columns ul_li clearfix">
 
-                                    <!-- 1 -->
-                                    <li>
-                                        <div class="supermarket_product_item">
-                                            <ul class="product_label ul_li_block clearfix">
+                                    @forelse($products as $product)
+                                        <li>
+                                            <div class="supermarket_product_item">
 
-                                                <li data-bg-color="#0062bd">NEW</li>
-                                            </ul>
-                                            <a class="item_image" href="#!">
-                                                <img src="assets/images/mobiles/16series.png" alt="iPhone 16 Series">
-                                            </a>
-                                            <div class="item_content">
+                                                <ul class="product_label ul_li_block clearfix">
+                                                    <li
+                                                        data-bg-color="{{ $product->status == 1 ? '#28a745' : '#dc3545' }}">
+                                                        {{ $product->status == 1 ? 'Available' : 'Sold Out' }}
+                                                    </li>
+                                                </ul>
 
-                                                <h3 class="item_title">
-                                                    <a href="#!">iPhone 16 Pro</a>
-                                                </h3>
 
-                                                <div class="item_price">
-                                                    <strong>Rs. 245,000</strong>
+                                                <a class="item_image"
+                                                    href="{{ route('product.details', $product->slug ?? $product->id) }}">
 
-                                                    <div class="koko_wrap">
+                                                    <img src="{{ $product->main_image
+                                                        ? asset('storage/products/' . $product->main_image)
+                                                        : asset('assets/images/no-image.png') }}"
+                                                        alt="{{ $product->name }}">
+                                                </a>
 
-                                                        <span>Or Pay in Rs. 61,250 x 3 with </span>
-                                                        <img src="assets/images/payment/koko.png" alt="Koko"
-                                                            class="koko_logo">
+
+                                                <div class="item_content">
+
+                                                    <h3 class="item_title">
+                                                        <a
+                                                            href="{{ route('product.details', $product->slug ?? $product->id) }}">
+                                                            {{ $product->name }}
+                                                        </a>
+                                                    </h3>
+
+                                                    <div class="item_price">
+                                                        <strong>Rs. {{ number_format($product->price) }}</strong>
+
+                                                        @if ($product->koko_installment_price && $product->koko_installment_part)
+                                                            <div class="koko_wrap">
+                                                                <span>
+                                                                    Or Pay in Rs.
+                                                                    {{ number_format($product->koko_installment_price) }}
+                                                                    x {{ $product->koko_installment_part }} with
+                                                                </span>
+                                                                <img src="{{ asset('assets/images/payment/koko.png') }}"
+                                                                    class="koko_logo">
+                                                            </div>
+                                                        @endif
                                                     </div>
+
                                                 </div>
                                             </div>
-                                        </div>
-                                    </li>
+                                        </li>
+                                    @empty
+                                        <li>
+                                            <p>No products found</p>
+                                        </li>
+                                    @endforelse
 
-                                    <li>
-                                        <div class="supermarket_product_item">
-                                            <ul class="product_label ul_li_block clearfix">
-
-                                                <li data-bg-color="#0062bd">NEW</li>
-                                            </ul>
-                                            <a class="item_image" href="#!">
-                                                <img src="assets/images/mobiles/11series.png" alt="iPhone 11 Series">
-                                            </a>
-                                            <div class="item_content">
-
-                                                <h3 class="item_title">
-                                                    <a href="#!">iPhone 11</a>
-                                                </h3>
-
-                                                <div class="item_price">
-                                                    <strong>Rs. 245,000</strong>
-
-                                                    <div class="koko_wrap">
-
-                                                        <span>Or Pay in Rs. 61,250 x 3 with </span>
-                                                        <img src="assets/images/payment/koko.png" alt="Koko"
-                                                            class="koko_logo">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-
-
-                                    <li>
-                                        <div class="supermarket_product_item">
-                                            <ul class="product_label ul_li_block clearfix">
-
-                                                <li data-bg-color="#0062bd">NEW</li>
-                                            </ul>
-                                            <a class="item_image" href="#!">
-                                                <img src="assets/images/mobiles/14series.png" alt="iPhone 14 Series">
-                                            </a>
-                                            <div class="item_content">
-
-                                                <h3 class="item_title">
-                                                    <a href="#!">iPhone 14 Pro</a>
-                                                </h3>
-
-                                                <div class="item_price">
-                                                    <strong>Rs. 245,000</strong>
-
-                                                    <div class="koko_wrap">
-
-                                                        <span>Or Pay in Rs. 61,250 x 3 with </span>
-                                                        <img src="assets/images/payment/koko.png" alt="Koko"
-                                                            class="koko_logo">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-
-                                    <li>
-                                        <div class="supermarket_product_item">
-                                            <ul class="product_label ul_li_block clearfix">
-
-                                                <li data-bg-color="#0062bd">NEW</li>
-                                            </ul>
-                                            <a class="item_image" href="#!">
-                                                <img src="assets/images/mobiles/15series.png" alt="iPhone 15 Series">
-                                            </a>
-                                            <div class="item_content">
-
-                                                <h3 class="item_title">
-                                                    <a href="#!">iPhone 15</a>
-                                                </h3>
-
-                                                <div class="item_price">
-                                                    <strong>Rs. 245,000</strong>
-
-                                                    <div class="koko_wrap">
-
-                                                        <span>Or Pay in Rs. 61,250 x 3 with </span>
-                                                        <img src="assets/images/payment/koko.png" alt="Koko"
-                                                            class="koko_logo">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-
-                                    <li>
-                                        <div class="supermarket_product_item">
-                                            <ul class="product_label ul_li_block clearfix">
-
-                                                <li data-bg-color="#0062bd">NEW</li>
-                                            </ul>
-                                            <a class="item_image" href="#!">
-                                                <img src="assets/images/mobiles/xsseries.png" alt="iPhone X Series">
-                                            </a>
-                                            <div class="item_content">
-
-                                                <h3 class="item_title">
-                                                    <a href="#!">iPhone X</a>
-                                                </h3>
-
-                                                <div class="item_price">
-                                                    <strong>Rs. 245,000</strong>
-
-                                                    <div class="koko_wrap">
-
-                                                        <span>Or Pay in Rs. 61,250 x 3 with </span>
-                                                        <img src="assets/images/payment/koko.png" alt="Koko"
-                                                            class="koko_logo">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-
-                                    <li>
-                                        <div class="supermarket_product_item">
-                                            <ul class="product_label ul_li_block clearfix">
-
-                                                <li data-bg-color="#0062bd">NEW</li>
-                                            </ul>
-                                            <a class="item_image" href="#!">
-                                                <img src="assets/images/mobiles/13series.png" alt="iPhone 13 Series">
-                                            </a>
-                                            <div class="item_content">
-
-                                                <h3 class="item_title">
-                                                    <a href="#!">iPhone 13</a>
-                                                </h3>
-
-                                                <div class="item_price">
-                                                    <strong>Rs. 245,000</strong>
-
-                                                    <div class="koko_wrap">
-
-                                                        <span>Or Pay in Rs. 61,250 x 3 with </span>
-                                                        <img src="assets/images/payment/koko.png" alt="Koko"
-                                                            class="koko_logo">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-
-                                    <li>
-                                        <div class="supermarket_product_item">
-                                            <ul class="product_label ul_li_block clearfix">
-
-                                                <li data-bg-color="#0062bd">NEW</li>
-                                            </ul>
-                                            <a class="item_image" href="#!">
-                                                <img src="assets/images/mobiles/seseries.png" alt="iPhone SE Series">
-                                            </a>
-                                            <div class="item_content">
-
-                                                <h3 class="item_title">
-                                                    <a href="#!">iPhone SE</a>
-                                                </h3>
-
-                                                <div class="item_price">
-                                                    <strong>Rs. 245,000</strong>
-
-                                                    <div class="koko_wrap">
-
-                                                        <span>Or Pay in Rs. 61,250 x 3 with </span>
-                                                        <img src="assets/images/payment/koko.png" alt="Koko"
-                                                            class="koko_logo">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-
-
-                                    <li>
-                                        <div class="supermarket_product_item">
-                                            <ul class="product_label ul_li_block clearfix">
-
-                                                <li data-bg-color="#0062bd">NEW</li>
-                                            </ul>
-                                            <a class="item_image" href="#!">
-                                                <img src="assets/images/mobiles/12series.png" alt="iPhone 12 Series">
-                                            </a>
-                                            <div class="item_content">
-
-                                                <h3 class="item_title">
-                                                    <a href="#!">iPhone 12</a>
-                                                </h3>
-
-                                                <div class="item_price">
-                                                    <strong>Rs. 245,000</strong>
-
-                                                    <div class="koko_wrap">
-
-                                                        <span>Or Pay in Rs. 61,250 x 3 with </span>
-                                                        <img src="assets/images/payment/koko.png" alt="Koko"
-                                                            class="koko_logo">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
                                 </ul>
 
                             </div>
@@ -1440,7 +1315,7 @@ font-family: "Lexend Deca", Arial, Helvetica, sans-serif;
                                 <div class="supermarket_product_listlayout">
                                     <div class="item_image">
                                         <img src="assets/images/accessories/charger.png" alt="Fast Charger"
-                                            class="product_img"  style="width: 100%; height: auto;">
+                                            class="product_img" style="width: 100%; height: auto;">
                                     </div>
                                     <div class="item_content">
 
@@ -1459,7 +1334,7 @@ font-family: "Lexend Deca", Arial, Helvetica, sans-serif;
                                 <div class="supermarket_product_listlayout">
                                     <div class="item_image">
                                         <img src="assets/images/accessories/bank2.png" alt="Power Bank"
-                                            class="product_img"  style="width: 100%; height: auto;">
+                                            class="product_img" style="width: 100%; height: auto;">
                                     </div>
                                     <div class="item_content">
 
@@ -1478,7 +1353,7 @@ font-family: "Lexend Deca", Arial, Helvetica, sans-serif;
                                 <div class="supermarket_product_listlayout">
                                     <div class="item_image">
                                         <img src="assets/images/accessories/type-c-cable.png" alt="Type C Cable"
-                                            class="product_img"  style="width: 100%; height: auto;">
+                                            class="product_img" style="width: 100%; height: auto;">
                                     </div>
                                     <div class="item_content">
 
@@ -1497,7 +1372,7 @@ font-family: "Lexend Deca", Arial, Helvetica, sans-serif;
                                 <div class="supermarket_product_listlayout">
                                     <div class="item_image">
                                         <img src="assets/images/accessories/jbl.png" alt="Bluetooth Speaker"
-                                            class="product_img"  style="width: 100%; height: auto;">
+                                            class="product_img" style="width: 100%; height: auto;">
                                     </div>
                                     <div class="item_content">
 
@@ -1516,7 +1391,7 @@ font-family: "Lexend Deca", Arial, Helvetica, sans-serif;
                                 <div class="supermarket_product_listlayout">
                                     <div class="item_image">
                                         <img src="assets/images/accessories/case.png" alt="Phone Case"
-                                            class="product_img"  style="width: 100%; height: auto;">
+                                            class="product_img" style="width: 100%; height: auto;">
                                     </div>
                                     <div class="item_content">
 
@@ -1552,10 +1427,9 @@ font-family: "Lexend Deca", Arial, Helvetica, sans-serif;
         <section class="advertisement_section sec_ptb_50 clearfix">
             <div class="container maxw_1460">
                 <div class="row justify-content-center">
-                    <div class="col-lg-6">
+                    <div class="col-lg-12">
                         <div class="sm_offer_item offer_fullimage text-white">
-                            <img src="assets/images/mobiles/banner12.jpg" alt="image_not_found"
-                                style="height: 293px;">
+                            <img src="assets/images/add/kokod.png" alt="image_not_found" style="height: 293px;">
                             {{-- <div class="item_content">
 									<h3 class="item_title text-white">
 										Smartphone Bestseller Products 2019
@@ -1569,22 +1443,7 @@ font-family: "Lexend Deca", Arial, Helvetica, sans-serif;
                         </div>
                     </div>
 
-                    <div class="col-lg-6">
-                        <div class="sm_offer_item offer_fullimage text-white">
-                            <img src="assets/images/mobiles/banner13.jpg" alt="image_not_found"
-                                style="height: 293px;">
-                            {{-- <div class="item_content">
-									<h3 class="item_title text-white">
-										Smartphone Bestseller Products 2019
-									</h3>
-									<span class="item_price">Price: $298.99</span>
-									<a class="text_btn" href="#!">
-										<span>Pre - Order Now</span>
-										<i class="fal fa-long-arrow-right"></i>
-									</a>
-								</div> --}}
-                        </div>
-                    </div>
+
                 </div>
             </div>
         </section>
@@ -1617,7 +1476,7 @@ font-family: "Lexend Deca", Arial, Helvetica, sans-serif;
                             <i class="fal fa-headset"></i>
                             <h4 class="text-white">GOT QUESTION? CALL US 24/7!</h4>
                             <strong>077 400 6216 / 077 075 6216</strong>
-                            
+
                         </div>
                     </div>
 

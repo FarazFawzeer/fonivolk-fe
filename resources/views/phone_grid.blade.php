@@ -40,6 +40,377 @@
 </head>
 
 <style>
+    .supermarket_product_item .product_label li {
+        height: 25px;
+        font-size: 12px;
+        padding: 0 10px;
+        /* give some breathing space */
+        line-height: 25px;
+        text-align: center;
+        border-radius: 3px;
+
+        display: inline-block;
+        /* important */
+        width: auto;
+        /* content-based width */
+        min-width: unset;
+        /* remove fixed constraint */
+    }
+
+    /* Mobile only breadcrumb spacing */
+    @media (max-width: 991px) {
+        .breadcrumb_mob {
+            margin-top: 40px !important;
+            /* adjust value as you like */
+            margin-bottom: -50px !important;
+        }
+    }
+
+    /* ==================================================
+   MOBILE PAGE + SIDEBAR FILTER FIX
+================================================== */
+
+    /* =========================================
+   Mobile filter toggle
+========================================= */
+    .mobile_filter_toggle_wrap {
+        margin-bottom: 18px;
+    }
+
+    .mobile_filter_toggle_btn {
+        width: 100%;
+        border: none;
+        background: #111;
+        color: #fff;
+        font-size: 14px;
+        font-weight: 600;
+        padding: 12px 16px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .mobile_filter_toggle_btn:hover,
+    .mobile_filter_toggle_btn:focus {
+        outline: none;
+        background: #000;
+    }
+
+    .mobile_filter_sidebar_wrap {
+        transition: all 0.3s ease;
+    }
+
+    @media (max-width: 991px) {
+        .mobile_filter_sidebar_wrap {
+            display: none;
+            margin-bottom: 20px;
+        }
+
+        .mobile_filter_sidebar_wrap.active {
+            display: block;
+        }
+
+        .mobile_filter_sidebar {
+            animation: fadeSlideDown 0.3s ease;
+        }
+    }
+
+    @keyframes fadeSlideDown {
+        from {
+            opacity: 0;
+            transform: translateY(-8px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* Keep desktop always visible */
+    @media (min-width: 992px) {
+        .mobile_filter_toggle_wrap {
+            display: none !important;
+        }
+
+        .mobile_filter_sidebar_wrap {
+            display: block !important;
+        }
+    }
+
+    /* General mobile spacing */
+    @media (max-width: 991px) {
+        .product_section {
+            padding-top: 20px;
+            padding-bottom: 30px;
+        }
+
+        .container.maxw_1600,
+        .container.maxw_1460 {
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+
+        .f2_breadcrumb_nav_wrap {
+            margin-top: 0 !important;
+            margin-bottom: 15px !important;
+            padding: 6px 0 !important;
+        }
+
+        .ce_breadcrumb_nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px 10px;
+            font-size: 12px;
+            line-height: 1.5;
+        }
+
+        .ce_breadcrumb_nav li {
+            margin-bottom: 0;
+        }
+    }
+
+    /* Sidebar filter mobile fix */
+    .mobile_filter_sidebar {
+        width: 100%;
+    }
+
+    @media (max-width: 991px) {
+        .mobile_filter_sidebar {
+            margin-bottom: 20px;
+        }
+
+
+        .mobile_filter_sidebar .sb_widget_title {
+            font-size: 15px;
+            line-height: 1.4;
+            margin-bottom: 12px;
+        }
+
+        .mobile_filter_sidebar .price-text {
+            flex-wrap: wrap;
+            gap: 8px;
+            font-size: 13px;
+        }
+
+        .mobile_filter_sidebar #amount {
+            width: 100%;
+            min-width: 0;
+            font-size: 13px;
+        }
+
+        .mobile_filter_sidebar .ul_li_block li {
+            margin-bottom: 10px;
+        }
+
+        .mobile_filter_sidebar .checkbox_item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .mobile_filter_sidebar .checkbox_item input[type="checkbox"] {
+            margin: 0;
+            flex: 0 0 auto;
+        }
+
+        .mobile_filter_sidebar .checkbox_item label {
+            margin: 0;
+            font-size: 14px;
+            line-height: 1.4;
+            word-break: break-word;
+        }
+    }
+
+    /* Product grid fix */
+    .electronic_product_columns {
+        display: flex;
+        flex-wrap: wrap;
+        margin: 0 -8px;
+        padding: 0;
+    }
+
+    .electronic_product_columns>li {
+        list-style: none;
+        padding: 8px;
+    }
+
+    @media (min-width: 1200px) {
+        .electronic_product_columns>li {
+            width: 25%;
+        }
+    }
+
+    @media (min-width: 768px) and (max-width: 1199px) {
+        .electronic_product_columns>li {
+            width: 33.3333%;
+        }
+    }
+
+    @media (min-width: 576px) and (max-width: 767px) {
+        .electronic_product_columns>li {
+            width: 50%;
+        }
+    }
+
+    @media (max-width: 575px) {
+        .electronic_product_columns>li {
+            width: 100%;
+        }
+    }
+
+    /* Product card mobile fix */
+    .electronic_product_item {
+        height: 100%;
+        border-radius: 12px;
+        overflow: hidden;
+    }
+
+    .electronic_product_item .item_image {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 15px;
+    }
+
+    .electronic_product_item .item_image img {
+        max-width: 100%;
+        height: auto;
+        max-height: 180px;
+        object-fit: contain;
+    }
+
+    .electronic_product_item .item_content {
+        padding: 12px 14px 16px;
+    }
+
+    .electronic_product_item .item_title {
+        font-size: 15px;
+        line-height: 1.4;
+        margin-bottom: 8px;
+    }
+
+    .electronic_product_item .item_price {
+        font-size: 16px;
+        display: block;
+        margin-bottom: 8px;
+    }
+
+    .koko_wrap {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 6px;
+        font-size: 12px;
+        line-height: 1.5;
+    }
+
+    .koko_logo {
+        height: 14px;
+        width: auto;
+    }
+
+    @media (max-width: 575px) {
+        .electronic_product_item .item_image {
+            padding: 12px;
+        }
+
+        .electronic_product_item .item_image img {
+            max-height: 150px;
+        }
+
+        .electronic_product_item .item_content {
+            padding: 12px;
+        }
+
+        .electronic_product_item .item_title {
+            font-size: 14px;
+        }
+
+        .electronic_product_item .item_price {
+            font-size: 15px;
+        }
+
+        .koko_wrap {
+            font-size: 11px;
+        }
+    }
+
+    /* Header/mobile menu spacing fix */
+    @media (max-width: 991px) {
+        .sidebar_mobile_menu {
+            margin-top: 0 !important;
+            padding-top: 18px;
+        }
+
+        .header_middle {
+            padding: 10px 0;
+        }
+
+        .brand_logo {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+        }
+
+        .logo_img {
+            height: 42px !important;
+            margin-left: 0 !important;
+            max-width: 140px;
+        }
+
+        .mh_action_btns {
+            display: flex;
+            align-items: center;
+            margin: 0;
+            gap: 8px;
+        }
+
+        .mh_action_btns li {
+            margin: 0;
+        }
+    }
+
+    /* Banner and load more button fix */
+    @media (max-width: 991px) {
+        .advertisement_image img {
+            width: 100%;
+            height: auto;
+
+        }
+
+        .abtn_wrap {
+            margin-bottom: 25px !important;
+        }
+    }
+
+    /* Extra small device polish */
+    @media (max-width: 480px) {
+        .mobile_filter_sidebar .sb_widget {
+            padding: 14px;
+            border-radius: 10px;
+            margin-bottom: 0px !important;
+        }
+
+        .mobile_filter_sidebar .sb_widget_title {
+            font-size: 14px;
+        }
+
+        .mobile_filter_sidebar .checkbox_item label {
+            font-size: 13px;
+        }
+
+        .ce_breadcrumb_nav {
+            font-size: 11px;
+        }
+    }
+</style>
+<style>
     .map_wrapper {
         width: 100%;
         overflow: hidden;
@@ -504,46 +875,53 @@
             height: 200px;
         }
     }
-
-
 </style>
 
 
-   <style>
-	.breadcrumb_section {
-    padding-top: 5px !important;
-    padding-bottom: 5px !important;
-    margin: 0 !important;
-}
+<style>
+    .breadcrumb_section {
+        padding-top: 5px !important;
+        padding-bottom: 5px !important;
+        margin: 0 !important;
+    }
 
-.f2_breadcrumb_nav_wrap {
-    padding: 8px 0 !important;
-	margin-top: 5px !important;
-	margin-bottom: 20px !important;
-}
+    .f2_breadcrumb_nav_wrap {
+        padding: 8px 0 !important;
+        margin-top: 5px !important;
+        margin-bottom: 20px !important;
+    }
 
-.ce_breadcrumb_nav {
-    margin: 0 !important;
-}
-   </style>
+    .ce_breadcrumb_nav {
+        margin: 0 !important;
+    }
+</style>
 
 <style>
-.supermarket_section_title .title_text {
-    font-family: "Lexend Deca", Arial, Helvetica, sans-serif;
-    font-size: 40px;
-}s
+    .supermarket_section_title .title_text {
+        font-family: "Lexend Deca", Arial, Helvetica, sans-serif;
+        font-size: 40px;
+    }
 
-.supermarket_deals_item .item_title a{
-  font-size: 20px;
-}
-.home_supermarket h1, .home_supermarket h2, .home_supermarket h3, .home_supermarket h4, .home_supermarket h5, .home_supermarket h6 {
-font-family: "Lexend Deca", Arial, Helvetica, sans-serif;
-}
-  .supermarket_tab_nav a:hover, .supermarket_tab_nav a.active {
-  color: #333e48;
-  background-color: #ffffff;
-  border-color: #000000;
-}
+    s .supermarket_deals_item .item_title a {
+        font-size: 20px;
+    }
+
+    .home_supermarket h1,
+    .home_supermarket h2,
+    .home_supermarket h3,
+    .home_supermarket h4,
+    .home_supermarket h5,
+    .home_supermarket h6 {
+        font-family: "Lexend Deca", Arial, Helvetica, sans-serif;
+    }
+
+    .supermarket_tab_nav a:hover,
+    .supermarket_tab_nav a.active {
+        color: #333e48;
+        background-color: #ffffff;
+        border-color: #000000;
+    }
+
     .koko_wrap {
         display: flex;
         align-items: center;
@@ -579,92 +957,99 @@ font-family: "Lexend Deca", Arial, Helvetica, sans-serif;
     <!-- header_section - start
   ================================================== -->
     <header class="header_section supermarket_header bg-white clearfix">
+
+        {{-- TOP BAR --}}
         <div class="header_top text-white clearfix">
             <div class="container maxw_1460">
                 <div class="row align-items-center justify-content-lg-between">
+
                     <div class="col-lg-5">
                         <p class="welcome_text mb-0">Luxury In Every Touch</p>
                     </div>
 
                     <div class="col-lg-7">
                         <ul class="info_list ul_li_right clearfix">
-                            <li><a href="#!"><i class="fal fa-map-marker-alt"></i> Store Locator</a></li>
-                            <li><a href="#!"><i class="fal fa-truck"></i> Track Your Order</a></li>
+                            <li>
+                                <a href="#!">
+                                    <i class="fal fa-map-marker-alt"></i> Store Locator
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#!">
+                                    <i class="fal fa-truck"></i> Track Your Order
+                                </a>
+                            </li>
                             <li>
                                 <form action="#">
                                     <div class="currency_select option_select mb-0">
                                         <select>
-                                            <option value="USD" selected>LKR</option>
-
+                                            <option value="LKR" selected>LKR</option>
                                         </select>
                                     </div>
                                 </form>
                             </li>
                         </ul>
                     </div>
+
                 </div>
             </div>
         </div>
 
+        {{-- MIDDLE HEADER --}}
         <div class="header_middle clearfix">
             <div class="container maxw_1460">
                 <div class="row align-items-center justify-content-lg-between">
+
+                    {{-- LOGO --}}
                     <div class="col-lg-3">
                         <div class="brand_logo">
-                            <a class="brand_link" href="/">
-                                <img src="assets/images/logo/fonivo2.png" srcset="assets/images/logo/fonivo2.png"
-                                    class="logo_img" alt="logo_not_found" style="height: 60px;">
+
+                            <a class="brand_link" href="{{ url('/') }}">
+                                <img src="{{ asset('assets/images/logo/fonivo2.png') }}" class="logo_img" alt="logo"
+                                    style="height: 60px;">
                             </a>
 
                             <ul class="mh_action_btns ul_li clearfix">
-                                {{-- <li>
-                                    <button type="button" class="search_btn" data-toggle="collapse"
-                                        data-target="#search_body_collapse" aria-expanded="false"
-                                        aria-controls="search_body_collapse">
-                                        <i class="fal fa-search"></i>
-                                    </button>
-                                </li> --}}
                                 <li>
-                                    <button type="button" class="cart_btn" onclick="window.location.href='/contact'"
-                                        title="Contact Support">
-                                        <i class="fal fa-headset" style="font-size: 25px; font-wight: 400;"></i>
+                                    <button type="button" class="cart_btn"
+                                        onclick="window.location.href='{{ url('/contact') }}'" title="Contact Support">
+                                        <i class="fal fa-headset" style="font-size: 25px;"></i>
                                     </button>
                                 </li>
-                                <li><button type="button" class="mobile_menu_btn"><i class="far fa-bars"
-                                            style="font-size: 25px; font-wight: 400;"></i></button>
+
+                                <li>
+                                    <button type="button" class="mobile_menu_btn">
+                                        <i class="far fa-bars" style="font-size: 25px;"></i>
+                                    </button>
                                 </li>
                             </ul>
+
                         </div>
                     </div>
 
+                    {{-- MENU --}}
                     <div class="col-lg-6">
-                        <div class="container maxw_1460">
-                            <nav class="main_menu d-flex justify-content-center">
-                                <ul class="ul_li d-flex justify-content-center align-items-center">
+                        <nav class="main_menu d-flex justify-content-center">
+                            <ul class="ul_li d-flex justify-content-center align-items-center">
 
-                                    <li>
-                                        <a href="/">Home</a>
+                                <li><a href="{{ url('/') }}">Home</a></li>
 
-                                    </li>
-                                    <li>
-                                        <a href="#!">Phones</a>
+                                <li>
+                                    <a href="{{ route('products.index') }}">Phones</a>
+                                </li>
 
+                                <li><a href="#!">Accessories</a></li>
+                                <li><a href="#!">About us</a></li>
+                                <li><a href="{{ url('/contact') }}">Contact us</a></li>
 
-                                    </li>
-                                    <li>
-                                        <a href="#!">Accessories</a>
-
-                                    </li>
-                                    <li><a href="#!">About us</a></li>
-                                    <li><a href="contact.html">Contact us</a></li>
-                                </ul>
-                            </nav>
-                        </div>
+                            </ul>
+                        </nav>
                     </div>
 
-
+                    {{-- RIGHT ACTION --}}
                     <div class="col-lg-3">
                         <div class="supermarket_header_btns clearfix">
+
                             <ul class="action_btns_group ul_li_right clearfix">
                                 <li>
                                     <button type="button">
@@ -672,22 +1057,20 @@ font-family: "Lexend Deca", Arial, Helvetica, sans-serif;
                                         <strong>Help?</strong>
                                     </button>
                                 </li>
-                                {{-- <li>
-										<button type="button">
-											<span>Shop</span>
-									<strong>Smart Deals</strong>
-										</button>
-									</li> --}}
+
                                 <li>
-                                    <button type="button" class="cart_btn" onclick="window.location.href='/contact'">
+                                    <button type="button" class="cart_btn"
+                                        onclick="window.location.href='{{ url('/contact') }}'">
                                         <i class="fal fa-headset"></i>
                                     </button>
                                 </li>
                             </ul>
-                            <span class="alart_text float-right  fonivo-note">
+
+                            <span class="alart_text float-right fonivo-note">
                                 <small>✔</small>
                                 Trusted service!
                             </span>
+
                         </div>
                     </div>
 
@@ -695,20 +1078,22 @@ font-family: "Lexend Deca", Arial, Helvetica, sans-serif;
             </div>
         </div>
 
-
-
+        {{-- SEARCH --}}
         <div id="search_body_collapse" class="search_body_collapse collapse">
             <div class="search_body">
                 <div class="container-fluid prl_90">
                     <form action="#">
                         <div class="form_item mb-0">
                             <input type="search" name="search" placeholder="Type here...">
-                            <button type="submit"><i class="fal fa-search"></i></button>
+                            <button type="submit">
+                                <i class="fal fa-search"></i>
+                            </button>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
+
     </header>
     <!-- header_section - end
   ================================================== -->
@@ -725,56 +1110,70 @@ font-family: "Lexend Deca", Arial, Helvetica, sans-serif;
         <!-- sidebar mobile menu & sidebar cart - start
    ================================================== -->
         <div class="sidebar_mobile_menu">
-            <button type="button" class="close_btn"><i class="fal fa-times"></i></button>
 
+            {{-- CLOSE BUTTON --}}
+            <button type="button" class="close_btn">
+                <i class="fal fa-times"></i>
+            </button>
+
+            {{-- LOGO --}}
             <div class="msb_widget brand_logo text-center">
-                <a href="index.html">
-                    <img src="assets/images/logo/fonivo2.png" alt="Fonivo Logo" style="max-height: 70px;">
+                <a href="{{ url('/') }}">
+                    <img src="{{ asset('assets/images/logo/fonivo2.png') }}" alt="Fonivo Logo"
+                        style="max-height: 70px;">
                 </a>
             </div>
 
+            {{-- MENU --}}
             <div class="msb_widget mobile_menu_list clearfix">
+
                 <h3 class="title_text mb_15 text-uppercase">
-                    {{-- <i class="far fa-bars mr-2"></i>  --}}
                     Menu List
                 </h3>
 
                 <ul class="ul_li_block clearfix fonivo_mobile_nav">
-                    <li><a href="/"><i class="fal fa-home mr-2"></i> Home</a></li>
-                    <li><a href="#!"><i class="fal fa-mobile-alt mr-2"></i> Phones</a></li>
-                    <li><a href="#!"><i class="fal fa-headphones-alt mr-2"></i> Accessories</a></li>
-                    <li><a href="#!"><i class="fal fa-info-circle mr-2"></i> About Us</a></li>
-                    <li><a href="/contact"><i class="fal fa-envelope mr-2"></i> Contact Us</a></li>
+
+                    <li>
+                        <a href="{{ url('/') }}">
+                            <i class="fal fa-home mr-2"></i> Home
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="{{ route('products.index') }}">
+                            <i class="fal fa-mobile-alt mr-2"></i> Phones
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#!">
+                            <i class="fal fa-headphones-alt mr-2"></i> Accessories
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#!">
+                            <i class="fal fa-info-circle mr-2"></i> About Us
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="{{ url('/contact') }}">
+                            <i class="fal fa-envelope mr-2"></i> Contact Us
+                        </a>
+                    </li>
+
                 </ul>
             </div>
 
-            {{-- <div class="msb_widget fonivo_mobile_actions">
-        <h3 class="title_text mb_15 text-uppercase">
-            <i class="fal fa-bolt mr-2"></i> Quick Access
-        </h3>
-
-        <ul class="ul_li_block clearfix">
-            <li>
-                <a href="/contact">
-                    <i class="fal fa-headset mr-2"></i> Need Help?
-                </a>
-            </li>
-            <li>
-                <a href="/shop">
-                    <i class="fal fa-tags mr-2"></i> Smart Deals
-                </a>
-            </li>
-            <li>
-                <a href="/contact">
-                    <i class="fal fa-tools mr-2"></i> Support Service
-                </a>
-            </li>
-        </ul>
-    </div> --}}
-
+            {{-- NOTE --}}
             <div class="msb_widget fonivo_mobile_note">
-                <span><i class="fas fa-check-circle mr-1"></i> Genuine trusted service!</span>
+                <span>
+                    <i class="fas fa-check-circle mr-1"></i>
+                    Genuine trusted service!
+                </span>
             </div>
+
         </div>
         <!-- sidebar mobile menu & sidebar cart - end
    ================================================== -->
@@ -784,19 +1183,18 @@ font-family: "Lexend Deca", Arial, Helvetica, sans-serif;
 
         <!-- breadcrumb_section - start
    ================================================== -->
-        <section
-            class="">
+        <section class="">
 
-         <div class="container maxw_1600">
-				<div class="f2_breadcrumb_nav_wrap">
-					<ul class="ce_breadcrumb_nav ul_li clearfix">
-						<li><a href="#!">Home</a></li>
-						<li>Shop</li>
-						<li>Furniture Store</li>
-						<li>Shop Page</li>
-					</ul>
-				</div>
-			</div>
+            <div class="container maxw_1600 breadcrumb_mob">
+                <div class="f2_breadcrumb_nav_wrap">
+                    <ul class="ce_breadcrumb_nav ul_li clearfix">
+                        <li><a href="#!">Home</a></li>
+                        <li>Shop</li>
+                        <li>Furniture Store</li>
+                        <li>Shop Page</li>
+                    </ul>
+                </div>
+            </div>
 
         </section>
         <!-- breadcrumb_section - end
@@ -804,229 +1202,104 @@ font-family: "Lexend Deca", Arial, Helvetica, sans-serif;
 
 
 
-			<!-- product_section - start
-			================================================== -->
-			<section class="product_section clearfix">
-				<div class="container maxw_1600">
-					<div class="row justify-content-lg-between">
+        <!-- product_section - start
+   ================================================== -->
+        <section class="product_section clearfix">
+            <div class="container maxw_1600">
+                <div class="row justify-content-lg-between align-items-start">
 
-						<div class="col-lg-9 order-last">
-				
-							<div class="tab-content mb_50">
-    <div id="grid_layout" class="tab-pane active">
 
-        <ul class="electronic_product_columns ul_li has_4columns clearfix">
+                    <div class="col-12 col-lg-9 order-2 order-lg-2">
 
-            <!-- 1 -->
-            <li>
-                <div class="electronic_product_item">
-                    <ul class="product_label ul_li clearfix">
-                        <li>NEW</li>
-                    </ul>
-                    <div class="item_image">
-                        <img src="assets/images/mobiles/16series.png" alt="iPhone 16 Pro">
-                    </div>
-                    <div class="item_content">
-                        
-                        <h3 class="item_title">
-                            <a href="#!">iPhone 16 Pro</a>
-                        </h3>
-                        <span class="item_price">Rs. 245,000</span>
+                        <div class="mobile_filter_toggle_wrap d-lg-none">
+                            <button type="button" class="mobile_filter_toggle_btn" id="mobileFilterToggle">
+                                <i class="far fa-sliders-h mr-2"></i>
+                                Filters
+                            </button>
+                        </div>
 
-                        <div class="koko_wrap">
-                            <span>Or Rs. 61,250 x 4 with</span>
-                            <img src="assets/images/payment/koko.png" class="koko_logo">
+                        <div class="tab-content mb_50">
+                            <div id="grid_layout" class="tab-pane active">
+
+                                <ul class="electronic_product_columns ul_li has_4columns clearfix">
+
+                                    @forelse($products as $product)
+                                        <li>
+                                            <div class="electronic_product_item">
+
+                                                {{-- STATUS --}}
+                                                <ul class="product_label ul_li clearfix">
+                                                    <li
+                                                        data-bg-color="{{ $product->status == 1 ? '#28a745' : '#dc3545' }}">
+                                                        {{ $product->status == 1 ? 'Available' : 'Sold Out' }}
+                                                    </li>
+                                                </ul>
+
+                                                {{-- IMAGE --}}
+                                                <div class="item_image">
+                                                    <a
+                                                        href="{{ route('product.details', $product->slug ?? $product->id) }}">
+                                                        <img src="{{ $product->main_image
+                                                            ? asset('storage/products/' . $product->main_image)
+                                                            : asset('assets/images/no-image.png') }}"
+                                                            alt="{{ $product->name }}">
+                                                    </a>
+                                                </div>
+
+                                                {{-- CONTENT --}}
+                                                <div class="item_content">
+
+                                                    <h3 class="item_title">
+                                                        <a
+                                                            href="{{ route('product.details', $product->slug ?? $product->id) }}">
+                                                            {{ $product->name }}
+                                                        </a>
+                                                    </h3>
+
+                                                    <span class="item_price">
+                                                        Rs. {{ number_format($product->price) }}
+                                                    </span>
+
+                                                    @if ($product->koko_installment_price && $product->koko_installment_part)
+                                                        <div class="koko_wrap">
+                                                            <span>
+                                                                Or Rs.
+                                                                {{ number_format($product->koko_installment_price) }}
+                                                                x {{ $product->koko_installment_part }} with
+                                                            </span>
+                                                            <img src="{{ asset('assets/images/payment/koko.png') }}"
+                                                                class="koko_logo">
+                                                        </div>
+                                                    @endif
+
+                                                </div>
+
+                                            </div>
+                                        </li>
+                                    @empty
+                                        <li>
+                                            <p>No products found</p>
+                                        </li>
+                                    @endforelse
+
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="abtn_wrap text-center mb_50">
+                            <a href="#!" class="custom_btn btn_border border_electronic">Load more</a>
+                        </div>
+
+                        <div class="advertisement_image" style="padding-bottom: 30px;">
+                            <a href="#!">
+                                <img src="assets/images/add/kokod.png" alt="image_not_found">
+                            </a>
                         </div>
                     </div>
-                </div>
-            </li>
-
-            <!-- 2 -->
-            <li>
-                <div class="electronic_product_item">
-                    <ul class="product_label ul_li clearfix">
-                        <li>NEW</li>
-                    </ul>
-                    <div class="item_image">
-                        <img src="assets/images/mobiles/11series.png" alt="iPhone 11">
-                    </div>
-                    <div class="item_content">
-                        
-                        <h3 class="item_title">
-                            <a href="#!">iPhone 11</a>
-                        </h3>
-                        <span class="item_price">Rs. 245,000</span>
-
-                        <div class="koko_wrap">
-                            <span>Or Rs. 61,250 x 4 with</span>
-                            <img src="assets/images/payment/koko.png" class="koko_logo">
-                        </div>
-                    </div>
-                </div>
-            </li>
-
-            <!-- 3 -->
-            <li>
-                <div class="electronic_product_item">
-                    <ul class="product_label ul_li clearfix">
-                        <li>NEW</li>
-                    </ul>
-                    <div class="item_image">
-                        <img src="assets/images/mobiles/14series.png" alt="iPhone 14 Pro">
-                    </div>
-                    <div class="item_content">
-                        
-                        <h3 class="item_title">
-                            <a href="#!">iPhone 14 Pro</a>
-                        </h3>
-                        <span class="item_price">Rs. 245,000</span>
-
-                        <div class="koko_wrap">
-                            <span>Or Rs. 61,250 x 4 with</span>
-                            <img src="assets/images/payment/koko.png" class="koko_logo">
-                        </div>
-                    </div>
-                </div>
-            </li>
-
-            <!-- 4 -->
-            <li>
-                <div class="electronic_product_item">
-                    <ul class="product_label ul_li clearfix">
-                        <li>NEW</li>
-                    </ul>
-                    <div class="item_image">
-                        <img src="assets/images/mobiles/15series.png" alt="iPhone 15">
-                    </div>
-                    <div class="item_content">
-                        
-                        <h3 class="item_title">
-                            <a href="#!">iPhone 15</a>
-                        </h3>
-                        <span class="item_price">Rs. 245,000</span>
-
-                        <div class="koko_wrap">
-                            <span>Or Rs. 61,250 x 4 with</span>
-                            <img src="assets/images/payment/koko.png" class="koko_logo">
-                        </div>
-                    </div>
-                </div>
-            </li>
-
-            <!-- 5 -->
-            <li>
-                <div class="electronic_product_item">
-                    <ul class="product_label ul_li clearfix">
-                        <li>NEW</li>
-                    </ul>
-                    <div class="item_image">
-                        <img src="assets/images/mobiles/xsseries.png" alt="iPhone X">
-                    </div>
-                    <div class="item_content">
-                        
-                        <h3 class="item_title">
-                            <a href="#!">iPhone X</a>
-                        </h3>
-                        <span class="item_price">Rs. 245,000</span>
-
-                        <div class="koko_wrap">
-                            <span>Or Rs. 61,250 x 4 with</span>
-                            <img src="assets/images/payment/koko.png" class="koko_logo">
-                        </div>
-                    </div>
-                </div>
-            </li>
-
-            <!-- 6 -->
-            <li>
-                <div class="electronic_product_item">
-                    <ul class="product_label ul_li clearfix">
-                        <li>NEW</li>
-                    </ul>
-                    <div class="item_image">
-                        <img src="assets/images/mobiles/13series.png" alt="iPhone 13">
-                    </div>
-                    <div class="item_content">
-                        
-                        <h3 class="item_title">
-                            <a href="#!">iPhone 13</a>
-                        </h3>
-                        <span class="item_price">Rs. 245,000</span>
-
-                        <div class="koko_wrap">
-                            <span>Or Rs. 61,250 x 4 with</span>
-                            <img src="assets/images/payment/koko.png" class="koko_logo">
-                        </div>
-                    </div>
-                </div>
-            </li>
-
-            <!-- 7 -->
-            <li>
-                <div class="electronic_product_item">
-                    <ul class="product_label ul_li clearfix">
-                        <li>NEW</li>
-                    </ul>
-                    <div class="item_image">
-                        <img src="assets/images/mobiles/seseries.png" alt="iPhone SE">
-                    </div>
-                    <div class="item_content">
-                        
-                        <h3 class="item_title">
-                            <a href="#!">iPhone SE</a>
-                        </h3>
-                        <span class="item_price">Rs. 245,000</span>
-
-                        <div class="koko_wrap">
-                            <span>Or Rs. 61,250 x 4 with</span>
-                            <img src="assets/images/payment/koko.png" class="koko_logo">
-                        </div>
-                    </div>
-                </div>
-            </li>
-
-            <!-- 8 -->
-            <li>
-                <div class="electronic_product_item">
-                    <ul class="product_label ul_li clearfix">
-                        <li>NEW</li>
-                    </ul>
-                    <div class="item_image">
-                        <img src="assets/images/mobiles/12series.png" alt="iPhone 12">
-                    </div>
-                    <div class="item_content">
-                        
-                        <h3 class="item_title">
-                            <a href="#!">iPhone 12</a>
-                        </h3>
-                        <span class="item_price">Rs. 245,000</span>
-
-                        <div class="koko_wrap">
-                            <span>Or Rs. 61,250 x 4 with</span>
-                            <img src="assets/images/payment/koko.png" class="koko_logo">
-                        </div>
-                    </div>
-                </div>
-            </li>
-
-        </ul>
-    </div>
-</div>
-
-							<div class="abtn_wrap text-center mb_50">
-								<a href="#!" class="custom_btn btn_border border_electronic">Load more</a>
-							</div>
-
-							<div class="advertisement_image">
-								<a href="#!">
-									<img src="assets/images/offer/electronic/img_04.jpg" alt="image_not_found">
-								</a>
-							</div>
-						</div>
-
-						<div class="col-lg-3">
-							<aside class="electronic_sidebar sidebar_section">
-								{{-- <div class="sb_widget sb_collapse_category">
+                    <div class="col-12 col-lg-3 order-1 order-lg-1 mb-4 ">
+                        <div class="mobile_filter_sidebar_wrap" id="mobileFilterWrapper">
+                            <aside class="electronic_sidebar sidebar_section mobile_filter_sidebar">
+                                {{-- <div class="sb_widget sb_collapse_category">
 									<h3 class="sb_widget_title">All Categories</h3>
 									<div id="sb_category_accordion" class="sb_category_accordion">
 										<div class="card">
@@ -1131,107 +1404,101 @@ font-family: "Lexend Deca", Arial, Helvetica, sans-serif;
 									</div>
 								</div> --}}
 
-								<div class="sb_widget sb_pricing_range">
-									<h3 class="sb_widget_title text-uppercase">Filters</h3>
-									<form action="#">
-										<div class="price-range-area clearfix">
-											<div id="slider-range" class="slider-range"></div>
-											<div class="price-text d-flex align-items-center">
-												<span>Price:</span>
-												<input type="text" id="amount" readonly>
-											</div>
-										</div>
-									</form>
-								</div>
 
-								<div class="sb_widget sb_color_checkbox">
-									<h3 class="sb_widget_title text-uppercase">Series</h3>
-									<form action="#">
-										<ul class="ul_li_block clearfix">
-											<li>
-												<div class="checkbox_item">
-													<input id="oculus_rift_checkbox" type="checkbox" checked>
-													<label for="oculus_rift_checkbox">iPhone X</label>
-												</div>
-											</li>
-											<li>
-												<div class="checkbox_item">
-													<input id="huawei_checkbox" type="checkbox">
-													<label for="huawei_checkbox">iPhone 11</label>
-												</div>
-											</li>
-											<li>
-												<div class="checkbox_item">
-													<input id="htc_checkbox" type="checkbox">
-													<label for="htc_checkbox">iPhone 12</label>
-												</div>
-											</li>
-											<li>
-												<div class="checkbox_item">
-													<input id="samsung_checkbox" type="checkbox">
-													<label for="samsung_checkbox">iPhone 13</label>
-												</div>
-											</li>
-											<li>
-												<div class="checkbox_item">
-													<input id="envato_checkbox" type="checkbox">
-													<label for="envato_checkbox">iPhone SE</label>
-												</div>
-											</li>
-										</ul>
-									</form>
-								</div>
+                                <form method="GET" action="{{ route('products.index') }}">
 
-								<div class="sb_widget sb_color_checkbox">
-									<h3 class="sb_widget_title text-uppercase">Color</h3>
-									<form action="#">
-										<ul class="ul_li_block clearfix">
-											<li>
-												<div class="checkbox_item">
-													<input id="black_color_checkbox" type="checkbox" checked>
-													<label for="black_color_checkbox">Black</label>
-												</div>
-											</li>
-											<li>
-												<div class="checkbox_item">
-													<input id="white_color_checkbox" type="checkbox">
-													<label for="white_color_checkbox">White</label>
-												</div>
-											</li>
-											<li>
-												<div class="checkbox_item">
-													<input id="blue_color_checkbox" type="checkbox">
-													<label for="blue_color_checkbox">Blue</label>
-												</div>
-											</li>
-											<li>
-												<div class="checkbox_item">
-													<input id="green_color_checkbox" type="checkbox">
-													<label for="green_color_checkbox">Green</label>
-												</div>
-											</li>
-											<li>
-												<div class="checkbox_item">
-													<input id="yellow_color_checkbox" type="checkbox">
-													<label for="yellow_color_checkbox">Yellow</label>
-												</div>
-											</li>
-										</ul>
-									</form>
-								</div>
-							</aside>
-						</div>
+                                    {{-- PRICE SLIDER (EXACT YOUR DESIGN) --}}
+                                    <div class="sb_widget sb_pricing_range filter_card">
+                                        <h3 class="sb_widget_title text-uppercase">Price Range</h3>
 
-					</div>
-				</div>
-			</section>
-			<!-- product_section - end
-			================================================== -->
+                                        <div class="price-range-area clearfix">
+
+                                            {{-- Slider --}}
+                                            <div id="slider-range" class="slider-range"></div>
+
+                                            <div class="price-text d-flex align-items-center">
+                                                <span>Price:</span>
+
+                                                <input type="text" id="amount" readonly>
+                                            </div>
+
+                                            {{-- Hidden inputs (IMPORTANT for backend) --}}
+                                            <input type="hidden" name="min_price" id="min_price">
+                                            <input type="hidden" name="max_price" id="max_price">
+
+                                        </div>
+                                    </div>
+
+                                    {{-- SERIES (DB) --}}
+                                    <div class="sb_widget sb_color_checkbox">
+                                        <h3 class="sb_widget_title text-uppercase">iPhone Series</h3>
+
+                                        <ul class="ul_li_block clearfix">
+                                            @foreach ($seriesList as $series)
+                                                <li>
+                                                    <div class="checkbox_item">
+                                                        <input type="checkbox" name="series[]"
+                                                            value="{{ $series }}"
+                                                            id="series_{{ $loop->index }}"
+                                                            {{ request()->has('series') && in_array($series, request()->series ?? []) ? 'checked' : '' }}>
+                                                        <label
+                                                            for="series_{{ $loop->index }}">{{ $series }}</label>
+                                                    </div>
+                                                </li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+
+                                    {{-- COLOR (DB) --}}
+                                    <div class="sb_widget sb_color_checkbox">
+                                        <h3 class="sb_widget_title text-uppercase">Color</h3>
+
+                                        <ul class="ul_li_block clearfix">
+                                            @foreach ($colorList as $color)
+                                                <li>
+                                                    <div class="checkbox_item">
+                                                        <input type="checkbox" name="color[]"
+                                                            value="{{ $color }}"
+                                                            id="color_{{ $loop->index }}"
+                                                            {{ request()->has('color') && in_array($color, request()->color ?? []) ? 'checked' : '' }}>
+                                                        <label
+                                                            for="color_{{ $loop->index }}">{{ $color }}</label>
+                                                    </div>
+                                                </li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+
+                                    {{-- APPLY --}}
+                                    <div class="mt-3">
+                                        <button type="submit" class="btn btn-dark w-100">
+                                            Apply Filters
+                                        </button>
+                                    </div>
+
+                                    {{-- RESET --}}
+                                    <div class="mt-2">
+                                        <a href="{{ route('products.index') }}" class="btn btn-light w-100">
+                                            Clear Filters
+                                        </a>
+                                    </div>
+
+                                </form>
+
+                            </aside>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+        <!-- product_section - end
+   ================================================== -->
 
 
-		</main>
-		<!-- main body - end
-		================================================== -->
+    </main>
+    <!-- main body - end
+  ================================================== -->
 
 
     <!-- footer_section - start
@@ -1293,41 +1560,90 @@ font-family: "Lexend Deca", Arial, Helvetica, sans-serif;
   ================================================== -->
 
 
-		<!-- fraimwork - jquery include -->
-		<script src="assets/js/jquery-3.5.1.min.js"></script>
-		<script src="assets/js/popper.min.js"></script>
-		<script src="assets/js/bootstrap.min.js"></script>
+    <!-- fraimwork - jquery include -->
+    <script src="assets/js/jquery-3.5.1.min.js"></script>
+    <script src="assets/js/popper.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
 
-		<!-- mobile menu - jquery include -->
-		<script src="assets/js/mCustomScrollbar.js"></script>
+    <!-- mobile menu - jquery include -->
+    <script src="assets/js/mCustomScrollbar.js"></script>
 
-		<!-- animation - jquery include -->
-		<script src="assets/js/parallaxie.js"></script>
-		<script src="assets/js/wow.min.js"></script>
+    <!-- animation - jquery include -->
+    <script src="assets/js/parallaxie.js"></script>
+    <script src="assets/js/wow.min.js"></script>
 
-		<!-- nice select - jquery include -->
-		<script src="assets/js/nice-select.min.js"></script>
+    <!-- nice select - jquery include -->
+    <script src="assets/js/nice-select.min.js"></script>
 
-		<!-- carousel - jquery include -->
-		<script src="assets/js/slick.min.js"></script>
+    <!-- carousel - jquery include -->
+    <script src="assets/js/slick.min.js"></script>
 
-		<!-- countdown timer - jquery include -->
-		<script src="assets/js/countdown.js"></script>
+    <!-- countdown timer - jquery include -->
+    <script src="assets/js/countdown.js"></script>
 
-		<!-- popup images & videos - jquery include -->
-		<script src="assets/js/magnific-popup.min.js"></script>
+    <!-- popup images & videos - jquery include -->
+    <script src="assets/js/magnific-popup.min.js"></script>
 
-		<!-- filtering & masonry layout - jquery include -->
-		<script src="assets/js/isotope.pkgd.min.js"></script>
-		<script src="assets/js/masonry.pkgd.min.js"></script>
-		<script src="assets/js/imagesloaded.pkgd.min.js"></script>
+    <!-- filtering & masonry layout - jquery include -->
+    <script src="assets/js/isotope.pkgd.min.js"></script>
+    <script src="assets/js/masonry.pkgd.min.js"></script>
+    <script src="assets/js/imagesloaded.pkgd.min.js"></script>
 
-		<!-- jquery ui - jquery include -->
-	    <script src="assets/js/jquery-ui.js"></script>
+    <!-- jquery ui - jquery include -->
+    <script src="assets/js/jquery-ui.js"></script>
 
-		<!-- custom - jquery include -->
-		<script src="assets/js/custom.js"></script>
+    <!-- custom - jquery include -->
+    <script src="assets/js/custom.js"></script>
 
 
-	</body>
+    <script>
+        $(document).ready(function() {
+            $('#mobileFilterToggle').on('click', function() {
+                $('#mobileFilterWrapper').toggleClass('active');
+
+                if ($('#mobileFilterWrapper').hasClass('active')) {
+                    $(this).html('<i class="far fa-times mr-2"></i> Close Filters');
+                } else {
+                    $(this).html('<i class="far fa-sliders-h mr-2"></i> Filter Products');
+                }
+            });
+        });
+    </script>
+
+    <script>
+        $(function() {
+
+            let min = {{ $minPrice ?? 0 }};
+            let max = {{ $maxPrice ?? 500000 }};
+
+            $("#slider-range").slider({
+                range: true,
+                min: min,
+                max: max,
+                values: [
+                    {{ request('min_price') ?? ($minPrice ?? 0) }},
+                    {{ request('max_price') ?? ($maxPrice ?? 500000) }}
+                ],
+                slide: function(event, ui) {
+                    $("#amount").val("Rs. " + ui.values[0] + " - Rs. " + ui.values[1]);
+
+                    $("#min_price").val(ui.values[0]);
+                    $("#max_price").val(ui.values[1]);
+                }
+            });
+
+            // initial display
+            $("#amount").val(
+                "Rs. " + $("#slider-range").slider("values", 0) +
+                " - Rs. " + $("#slider-range").slider("values", 1)
+            );
+
+            $("#min_price").val($("#slider-range").slider("values", 0));
+            $("#max_price").val($("#slider-range").slider("values", 1));
+
+        });
+    </script>
+    <div class="filter_overlay" id="filterOverlay"></div>
+</body>
+
 </html>

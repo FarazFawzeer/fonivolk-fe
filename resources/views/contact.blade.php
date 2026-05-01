@@ -526,92 +526,99 @@
     <!-- header_section - start
   ================================================== -->
     <header class="header_section supermarket_header bg-white clearfix">
+
+        {{-- TOP BAR --}}
         <div class="header_top text-white clearfix">
             <div class="container maxw_1460">
                 <div class="row align-items-center justify-content-lg-between">
+
                     <div class="col-lg-5">
                         <p class="welcome_text mb-0">Luxury In Every Touch</p>
                     </div>
 
                     <div class="col-lg-7">
                         <ul class="info_list ul_li_right clearfix">
-                            <li><a href="#!"><i class="fal fa-map-marker-alt"></i> Store Locator</a></li>
-                            <li><a href="#!"><i class="fal fa-truck"></i> Track Your Order</a></li>
+                            <li>
+                                <a href="#!">
+                                    <i class="fal fa-map-marker-alt"></i> Store Locator
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#!">
+                                    <i class="fal fa-truck"></i> Track Your Order
+                                </a>
+                            </li>
                             <li>
                                 <form action="#">
                                     <div class="currency_select option_select mb-0">
                                         <select>
-                                            <option value="USD" selected>LKR</option>
-
+                                            <option value="LKR" selected>LKR</option>
                                         </select>
                                     </div>
                                 </form>
                             </li>
                         </ul>
                     </div>
+
                 </div>
             </div>
         </div>
 
+        {{-- MIDDLE HEADER --}}
         <div class="header_middle clearfix">
             <div class="container maxw_1460">
                 <div class="row align-items-center justify-content-lg-between">
+
+                    {{-- LOGO --}}
                     <div class="col-lg-3">
                         <div class="brand_logo">
-                            <a class="brand_link" href="/">
-                                <img src="assets/images/logo/fonivo2.png" srcset="assets/images/logo/fonivo2.png"
-                                    class="logo_img" alt="logo_not_found" style="height: 60px;">
+
+                            <a class="brand_link" href="{{ url('/') }}">
+                                <img src="{{ asset('assets/images/logo/fonivo2.png') }}" class="logo_img" alt="logo"
+                                    style="height: 60px;">
                             </a>
 
                             <ul class="mh_action_btns ul_li clearfix">
-                                {{-- <li>
-                                    <button type="button" class="search_btn" data-toggle="collapse"
-                                        data-target="#search_body_collapse" aria-expanded="false"
-                                        aria-controls="search_body_collapse">
-                                        <i class="fal fa-search"></i>
-                                    </button>
-                                </li> --}}
                                 <li>
-                                    <button type="button" class="cart_btn" onclick="window.location.href='/contact'"
-                                        title="Contact Support">
-                                        <i class="fal fa-headset" style="font-size: 25px; font-wight: 400;"></i>
+                                    <button type="button" class="cart_btn"
+                                        onclick="window.location.href='{{ url('/contact') }}'" title="Contact Support">
+                                        <i class="fal fa-headset" style="font-size: 25px;"></i>
                                     </button>
                                 </li>
-                                <li><button type="button" class="mobile_menu_btn"><i class="far fa-bars"
-                                            style="font-size: 25px; font-wight: 400;"></i></button>
+
+                                <li>
+                                    <button type="button" class="mobile_menu_btn">
+                                        <i class="far fa-bars" style="font-size: 25px;"></i>
+                                    </button>
                                 </li>
                             </ul>
+
                         </div>
                     </div>
 
+                    {{-- MENU --}}
                     <div class="col-lg-6">
-                        <div class="container maxw_1460">
-                            <nav class="main_menu d-flex justify-content-center">
-                                <ul class="ul_li d-flex justify-content-center align-items-center">
+                        <nav class="main_menu d-flex justify-content-center">
+                            <ul class="ul_li d-flex justify-content-center align-items-center">
 
-                                    <li>
-                                        <a href="/">Home</a>
+                                <li><a href="{{ url('/') }}">Home</a></li>
 
-                                    </li>
-                                    <li>
-                                        <a href="#!">Phones</a>
+                                <li>
+                                    <a href="{{ route('products.index') }}">Phones</a>
+                                </li>
 
+                                <li><a href="#!">Accessories</a></li>
+                                <li><a href="#!">About us</a></li>
+                                <li><a href="{{ url('/contact') }}">Contact us</a></li>
 
-                                    </li>
-                                    <li>
-                                        <a href="#!">Accessories</a>
-
-                                    </li>
-                                    <li><a href="#!">About us</a></li>
-                                    <li><a href="contact.html">Contact us</a></li>
-                                </ul>
-                            </nav>
-                        </div>
+                            </ul>
+                        </nav>
                     </div>
 
-
+                    {{-- RIGHT ACTION --}}
                     <div class="col-lg-3">
                         <div class="supermarket_header_btns clearfix">
+
                             <ul class="action_btns_group ul_li_right clearfix">
                                 <li>
                                     <button type="button">
@@ -619,22 +626,20 @@
                                         <strong>Help?</strong>
                                     </button>
                                 </li>
-                                {{-- <li>
-										<button type="button">
-											<span>Shop</span>
-									<strong>Smart Deals</strong>
-										</button>
-									</li> --}}
+
                                 <li>
-                                    <button type="button" class="cart_btn" onclick="window.location.href='/contact'">
+                                    <button type="button" class="cart_btn"
+                                        onclick="window.location.href='{{ url('/contact') }}'">
                                         <i class="fal fa-headset"></i>
                                     </button>
                                 </li>
                             </ul>
-                            <span class="alart_text float-right  fonivo-note">
+
+                            <span class="alart_text float-right fonivo-note">
                                 <small>✔</small>
                                 Trusted service!
                             </span>
+
                         </div>
                     </div>
 
@@ -642,20 +647,22 @@
             </div>
         </div>
 
-
-
+        {{-- SEARCH --}}
         <div id="search_body_collapse" class="search_body_collapse collapse">
             <div class="search_body">
                 <div class="container-fluid prl_90">
                     <form action="#">
                         <div class="form_item mb-0">
                             <input type="search" name="search" placeholder="Type here...">
-                            <button type="submit"><i class="fal fa-search"></i></button>
+                            <button type="submit">
+                                <i class="fal fa-search"></i>
+                            </button>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
+
     </header>
     <!-- header_section - end
   ================================================== -->
@@ -672,56 +679,70 @@
         <!-- sidebar mobile menu & sidebar cart - start
    ================================================== -->
         <div class="sidebar_mobile_menu">
-            <button type="button" class="close_btn"><i class="fal fa-times"></i></button>
 
+            {{-- CLOSE BUTTON --}}
+            <button type="button" class="close_btn">
+                <i class="fal fa-times"></i>
+            </button>
+
+            {{-- LOGO --}}
             <div class="msb_widget brand_logo text-center">
-                <a href="index.html">
-                    <img src="assets/images/logo/fonivo2.png" alt="Fonivo Logo" style="max-height: 70px;">
+                <a href="{{ url('/') }}">
+                    <img src="{{ asset('assets/images/logo/fonivo2.png') }}" alt="Fonivo Logo"
+                        style="max-height: 70px;">
                 </a>
             </div>
 
+            {{-- MENU --}}
             <div class="msb_widget mobile_menu_list clearfix">
+
                 <h3 class="title_text mb_15 text-uppercase">
-                    {{-- <i class="far fa-bars mr-2"></i>  --}}
                     Menu List
                 </h3>
 
                 <ul class="ul_li_block clearfix fonivo_mobile_nav">
-                    <li><a href="/"><i class="fal fa-home mr-2"></i> Home</a></li>
-                    <li><a href="#!"><i class="fal fa-mobile-alt mr-2"></i> Phones</a></li>
-                    <li><a href="#!"><i class="fal fa-headphones-alt mr-2"></i> Accessories</a></li>
-                    <li><a href="#!"><i class="fal fa-info-circle mr-2"></i> About Us</a></li>
-                    <li><a href="/contact"><i class="fal fa-envelope mr-2"></i> Contact Us</a></li>
+
+                    <li>
+                        <a href="{{ url('/') }}">
+                            <i class="fal fa-home mr-2"></i> Home
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="{{ route('products.index') }}">
+                            <i class="fal fa-mobile-alt mr-2"></i> Phones
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#!">
+                            <i class="fal fa-headphones-alt mr-2"></i> Accessories
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#!">
+                            <i class="fal fa-info-circle mr-2"></i> About Us
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="{{ url('/contact') }}">
+                            <i class="fal fa-envelope mr-2"></i> Contact Us
+                        </a>
+                    </li>
+
                 </ul>
             </div>
 
-            {{-- <div class="msb_widget fonivo_mobile_actions">
-        <h3 class="title_text mb_15 text-uppercase">
-            <i class="fal fa-bolt mr-2"></i> Quick Access
-        </h3>
-
-        <ul class="ul_li_block clearfix">
-            <li>
-                <a href="/contact">
-                    <i class="fal fa-headset mr-2"></i> Need Help?
-                </a>
-            </li>
-            <li>
-                <a href="/shop">
-                    <i class="fal fa-tags mr-2"></i> Smart Deals
-                </a>
-            </li>
-            <li>
-                <a href="/contact">
-                    <i class="fal fa-tools mr-2"></i> Support Service
-                </a>
-            </li>
-        </ul>
-    </div> --}}
-
+            {{-- NOTE --}}
             <div class="msb_widget fonivo_mobile_note">
-                <span><i class="fas fa-check-circle mr-1"></i> Genuine trusted service!</span>
+                <span>
+                    <i class="fas fa-check-circle mr-1"></i>
+                    Genuine trusted service!
+                </span>
             </div>
+
         </div>
         <!-- sidebar mobile menu & sidebar cart - end
    ================================================== -->
