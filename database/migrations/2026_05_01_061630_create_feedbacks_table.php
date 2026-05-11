@@ -6,23 +6,22 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
     {
-        Schema::create('home_banners', function (Blueprint $table) {
+        Schema::create('feedbacks', function (Blueprint $table) {
             $table->id();
-            $table->string('video')->nullable();
+
+            $table->string('name');
+            $table->string('email');
+            $table->string('subject')->nullable();
+            $table->text('message');
+
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
-        Schema::dropIfExists('home_banners');
+        Schema::dropIfExists('feedbacks');
     }
 };

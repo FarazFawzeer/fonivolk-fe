@@ -40,6 +40,43 @@
 </head>
 
 <style>
+
+       .supermarket_footer .form_item .submit_btn {
+        top: 50%;
+        right: 0px;
+        height: 60px;
+        color: #ffffff;
+        line-height: 60px;
+        padding: 0px 35px;
+        text-align: center;
+        position: absolute;
+        margin-right: -1px;
+        background-color: #090909;
+        transform: translateY(-50%);
+        border-top-right-radius: 45px;
+        border-bottom-right-radius: 45px;
+    }
+
+    @media (max-width: 991px) {
+
+        .mh_action_btns .cart_btn,
+        .mh_action_btns .mobile_menu_btn {
+            background: transparent !important;
+            box-shadow: none !important;
+            border: none !important;
+            color: #fff !important;
+        }
+
+        .mh_action_btns .cart_btn i,
+        .mh_action_btns .mobile_menu_btn i {
+            color: #fff !important;
+        }
+    }
+
+    .supermarket_header .main_menu>ul>li>a {
+        color: #ffffff !important;
+    }
+
     .map_wrapper {
         width: 100%;
         overflow: hidden;
@@ -525,10 +562,11 @@
 
     <!-- header_section - start
   ================================================== -->
-    <header class="header_section supermarket_header bg-white clearfix">
+    <header class="header_section supermarket_header bg-white clearfix"
+        style="background-color: rgba(0, 0, 0, 1) !important;">
 
         {{-- TOP BAR --}}
-        <div class="header_top text-white clearfix">
+        {{-- <div class="header_top text-white clearfix">
             <div class="container maxw_1460">
                 <div class="row align-items-center justify-content-lg-between">
 
@@ -562,11 +600,11 @@
 
                 </div>
             </div>
-        </div>
+        </div> --}}
 
         {{-- MIDDLE HEADER --}}
         <div class="header_middle clearfix">
-            <div class="container maxw_1460">
+            <div class="container">
                 <div class="row align-items-center justify-content-lg-between">
 
                     {{-- LOGO --}}
@@ -574,8 +612,8 @@
                         <div class="brand_logo">
 
                             <a class="brand_link" href="{{ url('/') }}">
-                                <img src="{{ asset('assets/images/logo/fonivo2.png') }}" class="logo_img" alt="logo"
-                                    style="height: 60px;">
+                                <img src="{{ asset('assets/images/logo/fonivow3.png') }}" class="logo_img"
+                                    alt="logo" style="height: 70px;">
                             </a>
 
                             <ul class="mh_action_btns ul_li clearfix">
@@ -598,8 +636,9 @@
 
                     {{-- MENU --}}
                     <div class="col-lg-6">
-                        <nav class="main_menu d-flex justify-content-center">
-                            <ul class="ul_li d-flex justify-content-center align-items-center">
+                        <nav class="main_menu d-flex justify-content-center" style=" color: #ffffff !important; ">
+                            <ul class="ul_li d-flex justify-content-center align-items-center"
+                                style=" color: #ffffff !important; ">
 
                                 <li><a href="{{ url('/') }}">Home</a></li>
 
@@ -607,8 +646,8 @@
                                     <a href="{{ route('products.index') }}">Phones</a>
                                 </li>
 
-                                <li><a href="#!">Accessories</a></li>
-                                <li><a href="#!">About us</a></li>
+                                <li><a href="{{ route('accessories.grid') }}">Accessories</a></li>
+
                                 <li><a href="{{ url('/contact') }}">Contact us</a></li>
 
                             </ul>
@@ -622,23 +661,20 @@
                             <ul class="action_btns_group ul_li_right clearfix">
                                 <li>
                                     <button type="button">
-                                        <span>Need</span>
-                                        <strong>Help?</strong>
+                                        <span style="color: #373333;">Need</span>
+                                        <strong style="color: #ffffff;">Help?</strong>
                                     </button>
                                 </li>
 
                                 <li>
                                     <button type="button" class="cart_btn"
                                         onclick="window.location.href='{{ url('/contact') }}'">
-                                        <i class="fal fa-headset"></i>
+                                        <i class="fal fa-headset" style="color: #ffffff;"></i>
                                     </button>
                                 </li>
                             </ul>
 
-                            <span class="alart_text float-right fonivo-note">
-                                <small>✔</small>
-                                Trusted service!
-                            </span>
+
 
                         </div>
                     </div>
@@ -676,77 +712,63 @@
 
 
 
-        <!-- sidebar mobile menu & sidebar cart - start
+     <!-- sidebar mobile menu & sidebar cart - start
    ================================================== -->
-        <div class="sidebar_mobile_menu">
+        <div class="sidebar_mobile_menu " style="background: #000;">
 
             {{-- CLOSE BUTTON --}}
             <button type="button" class="close_btn">
-                <i class="fal fa-times"></i>
+                <i class="fal fa-times" style="color: #fff"></i>
             </button>
 
             {{-- LOGO --}}
-            <div class="msb_widget brand_logo text-center">
+            <div class="msb_widget brand_logo text-center mb-3">
                 <a href="{{ url('/') }}">
-                    <img src="{{ asset('assets/images/logo/fonivo2.png') }}" alt="Fonivo Logo"
+                    <img src="{{ asset('assets/images/logo/fonivow3.png') }}" alt="Fonivo Logo"
                         style="max-height: 70px;">
                 </a>
             </div>
 
             {{-- MENU --}}
-            <div class="msb_widget mobile_menu_list clearfix">
+            <div class=" mobile_menu_list clearfix">
 
-                <h3 class="title_text mb_15 text-uppercase">
-                    Menu List
-                </h3>
-
+                
                 <ul class="ul_li_block clearfix fonivo_mobile_nav">
 
                     <li>
-                        <a href="{{ url('/') }}">
-                            <i class="fal fa-home mr-2"></i> Home
+                        <a href="{{ url('/') }}" style="color: #fff;">
+                           Home
                         </a>
                     </li>
 
                     <li>
-                        <a href="{{ route('products.index') }}">
-                            <i class="fal fa-mobile-alt mr-2"></i> Phones
+                        <a href="{{ route('products.index') }}" style="color: #fff; ">
+                             Phones
                         </a>
                     </li>
 
                     <li>
-                        <a href="#!">
-                            <i class="fal fa-headphones-alt mr-2"></i> Accessories
+                        <a href="{{ route('accessories.grid') }}" style="color: #fff; ">
+                            Accessories
                         </a>
                     </li>
 
-                    <li>
-                        <a href="#!">
-                            <i class="fal fa-info-circle mr-2"></i> About Us
-                        </a>
-                    </li>
+
 
                     <li>
-                        <a href="{{ url('/contact') }}">
-                            <i class="fal fa-envelope mr-2"></i> Contact Us
+                        <a href="{{ url('/contact') }}" style="color: #fff; ">
+                           Contact Us
                         </a>
                     </li>
 
                 </ul>
             </div>
 
-            {{-- NOTE --}}
-            <div class="msb_widget fonivo_mobile_note">
-                <span>
-                    <i class="fas fa-check-circle mr-1"></i>
-                    Genuine trusted service!
-                </span>
-            </div>
+          
 
         </div>
         <!-- sidebar mobile menu & sidebar cart - end
    ================================================== -->
-
 
 
 
@@ -828,32 +850,61 @@
                     <div class="col-lg-7">
                         <div class="main_contact_form">
                             <h3 class="title_text mb_30">FeedBack</h3>
-                            <form action="#">
+
+                            @if (session('success'))
+                                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                    {{ session('success') }}
+
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                        aria-label="Close"></button>
+                                </div>
+                            @endif
+
+                            @if ($errors->any())
+                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                    <ul class="mb-0">
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                        aria-label="Close"></button>
+                                </div>
+                            @endif
+                            <form action="{{ route('feedback.store') }}" method="POST">
+                                @csrf
+
                                 <div class="row">
-                                    <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+
+                                    <div class="col-lg-4">
                                         <div class="form_item">
-                                            <input type="text" name="name" placeholder="Your Name">
+                                            <input type="text" name="name" placeholder="Your Name" required>
                                         </div>
                                     </div>
 
-                                    <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                                    <div class="col-lg-4">
                                         <div class="form_item">
-                                            <input type="email" name="email" placeholder="Your Email">
+                                            <input type="email" name="email" placeholder="Your Email" required>
                                         </div>
                                     </div>
 
-                                    <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
+                                    <div class="col-lg-4">
                                         <div class="form_item">
                                             <input type="text" name="subject" placeholder="Subject">
                                         </div>
                                     </div>
+
                                 </div>
 
                                 <div class="form_item">
-                                    <textarea name="message" placeholder="Your Message"></textarea>
+                                    <textarea name="message" placeholder="Your Message" required></textarea>
                                 </div>
-                                <button type="submit" class="custom_btn bg_default_red text-uppercase">view
-                                    projects</button>
+
+                                <button type="submit" class="custom_btn bg_default_red text-uppercase">
+                                    Send Feedback
+                                </button>
+
                             </form>
                         </div>
                     </div>
@@ -876,10 +927,10 @@
     <footer class="footer_section supermarket_footer clearfix">
 
 
-        <div class="footer_middle sec_ptb_50 text-white clearfix" data-bg-color="#23292d">
+        <div class="footer_middle sec_ptb_50 text-white clearfix" data-bg-color="#000" style="border-bottom: 1px solid #333;">
             <div class="container">
                 <div class="row align-items-center justify-content-center">
-                    <div class="col-lg-5 col-md-7 col-sm-9 col-xs-12">
+                    <div class="col-lg-4 col-md-7 col-sm-9 col-xs-12">
                         <div class="form_item mb-0">
                             <form action="#">
                                 <input type="email" name="email" placeholder="Enter Your Email Address">
@@ -888,11 +939,12 @@
                         </div>
                     </div>
 
-                    <div class="col-lg-3 col-md-7 col-sm-9 col-xs-12">
+                    <div class="col-lg-4 col-md-7 col-sm-9 col-xs-12">
                         <div class="footer_electronic_hotline mb_30">
                             <i class="fal fa-headset"></i>
                             <h4 class="text-white">GOT QUESTION? CALL US 24/7!</h4>
-                            <span>+94 77 400 6216</span>
+                            <strong>077 400 6216 / 077 075 6216</strong>
+
                         </div>
                     </div>
 
@@ -909,7 +961,7 @@
             </div>
         </div>
 
-        <div class="footer_bottom text-white clearfix" data-bg-color="#191e22">
+        <div class="footer_bottom text-white clearfix" data-bg-color="#000">
             <div class="container">
                 <div class="row justify-content-lg-between">
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
@@ -928,7 +980,6 @@
     </footer>
     <!-- footer_section - end
   ================================================== -->
-
 
     <!-- fraimwork - jquery include -->
     <script src="assets/js/jquery-3.5.1.min.js"></script>
@@ -968,7 +1019,20 @@
 
     <!-- custom - jquery include -->
     <script src="assets/js/custom.js"></script>
+<script>
+    setTimeout(() => {
+        document.querySelectorAll('.alert').forEach(alert => {
 
+            alert.style.transition = "0.5s";
+            alert.style.opacity = "0";
+
+            setTimeout(() => {
+                alert.remove();
+            }, 500);
+
+        });
+    }, 3000); // 3 seconds
+</script>
 
 </body>
 

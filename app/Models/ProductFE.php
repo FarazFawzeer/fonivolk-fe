@@ -23,6 +23,7 @@ class ProductFe extends Model
         'price',
         'koko_installment_price',
         'koko_installment_part',
+          'koko_percentage',
         'main_image',
         'sub_images',
         'status',
@@ -36,5 +37,6 @@ class ProductFe extends Model
         'koko_installment_price' => 'decimal:2',
         'status' => 'boolean',
         'is_published' => 'boolean',
+        'koko_percentage' => 'decimal:2',
     ];
 }

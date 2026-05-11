@@ -7,39 +7,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-    <title>Fonivo.lk - Contact</title>
-    <link rel="shortcut icon" href="assets/images/logo/fav.jpg">
+    {{-- SEO DYNAMIC TITLE --}}
+    <title>@yield('title', config('app.name', 'Fonivo.lk'))</title>
 
-    <!-- fraimwork - css include -->
-    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
+    {{-- META DESCRIPTION --}}
+    <meta name="description" content="@yield('meta_description', 'Fonivo.lk - Best mobile phones and accessories in Sri Lanka')">
 
-    <!-- icon - css include -->
-    <link rel="stylesheet" type="text/css" href="assets/css/fontawesome.css">
+    {{-- FAVICON --}}
+    <link rel="shortcut icon" href="{{ asset('assets/images/logo/fav.jpg') }}">
 
-    <!-- animation - css include -->
-    <link rel="stylesheet" type="text/css" href="assets/css/animate.css">
+    {{-- CSRF (IMPORTANT FOR LARAVEL FORMS + AJAX) --}}
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <!-- nice select - css include -->
-    <link rel="stylesheet" type="text/css" href="assets/css/nice-select.css">
+    {{-- ================= CSS ================= --}}
 
-    <!-- carousel - css include -->
-    <link rel="stylesheet" type="text/css" href="assets/css/slick.css">
-    <link rel="stylesheet" type="text/css" href="assets/css/slick-theme.css">
+    <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/fontawesome.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/animate.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/nice-select.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/slick.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/slick-theme.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/magnific-popup.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/jquery-ui.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
 
-    <!-- popup images & videos - css include -->
-    <link rel="stylesheet" type="text/css" href="assets/css/magnific-popup.css">
-
-    <!-- jquery ui - css include -->
-    <link rel="stylesheet" type="text/css" href="assets/css/jquery-ui.css">
-
-    <!-- custom - css include -->
-    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
-
+    {{-- CDN (Swiper) --}}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
 
-</head>
+    {{-- PAGE SPECIFIC STYLES --}}
+    @stack('styles')
 
+</head>
 <style>
+
        .supermarket_footer .form_item .submit_btn {
         top: 50%;
         right: 0px;
@@ -76,378 +76,127 @@
         color: #ffffff !important;
     }
 
-
-    .supermarket_product_item .product_label li {
-        height: 25px;
-        font-size: 12px;
-        padding: 0 10px;
-        /* give some breathing space */
-        line-height: 25px;
-        text-align: center;
-        border-radius: 3px;
-
-        display: inline-block;
-        /* important */
-        width: auto;
-        /* content-based width */
-        min-width: unset;
-        /* remove fixed constraint */
-    }
-
-    /* Mobile only breadcrumb spacing */
-    @media (max-width: 991px) {
-        .breadcrumb_mob {
-            margin-top: 40px !important;
-            /* adjust value as you like */
-            margin-bottom: -50px !important;
-        }
-    }
-
-    /* ==================================================
-   MOBILE PAGE + SIDEBAR FILTER FIX
-================================================== */
-
-    /* =========================================
-   Mobile filter toggle
-========================================= */
-    .mobile_filter_toggle_wrap {
-        margin-bottom: 18px;
-    }
-
-    .mobile_filter_toggle_btn {
-        width: 100%;
-        border: none;
-        background: #111;
-        color: #fff;
-        font-size: 14px;
-        font-weight: 600;
-        padding: 12px 16px;
-
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 8px;
-        cursor: pointer;
-        transition: all 0.3s ease;
-    }
-
-    .mobile_filter_toggle_btn:hover,
-    .mobile_filter_toggle_btn:focus {
-        outline: none;
-        background: #000;
-    }
-
-    .mobile_filter_sidebar_wrap {
-        transition: all 0.3s ease;
-    }
-
-    @media (max-width: 991px) {
-        .mobile_filter_sidebar_wrap {
-            display: none;
-            margin-bottom: 20px;
-        }
-
-        .mobile_filter_sidebar_wrap.active {
-            display: block;
-        }
-
-        .mobile_filter_sidebar {
-            animation: fadeSlideDown 0.3s ease;
-        }
-    }
-
-    @keyframes fadeSlideDown {
-        from {
-            opacity: 0;
-            transform: translateY(-8px);
-        }
-
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-
-    /* Keep desktop always visible */
-    @media (min-width: 992px) {
-        .mobile_filter_toggle_wrap {
-            display: none !important;
-        }
-
-        .mobile_filter_sidebar_wrap {
-            display: block !important;
-        }
-    }
-
-    /* General mobile spacing */
-    @media (max-width: 991px) {
-        .product_section {
-            padding-top: 20px;
-            padding-bottom: 30px;
-        }
-
-        .container.maxw_1600,
-        .container.maxw_1460 {
-            padding-left: 15px;
-            padding-right: 15px;
-        }
-
-        .f2_breadcrumb_nav_wrap {
-            margin-top: 0 !important;
-            margin-bottom: 15px !important;
-            padding: 6px 0 !important;
-        }
-
-        .ce_breadcrumb_nav {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 6px 10px;
-            font-size: 12px;
-            line-height: 1.5;
-        }
-
-        .ce_breadcrumb_nav li {
-            margin-bottom: 0;
-        }
-    }
-
-    /* Sidebar filter mobile fix */
-    .mobile_filter_sidebar {
-        width: 100%;
-    }
-
-    @media (max-width: 991px) {
-        .mobile_filter_sidebar {
-            margin-bottom: 20px;
-        }
-
-
-        .mobile_filter_sidebar .sb_widget_title {
-            font-size: 15px;
-            line-height: 1.4;
-            margin-bottom: 12px;
-        }
-
-        .mobile_filter_sidebar .price-text {
-            flex-wrap: wrap;
-            gap: 8px;
-            font-size: 13px;
-        }
-
-        .mobile_filter_sidebar #amount {
-            width: 100%;
-            min-width: 0;
-            font-size: 13px;
-        }
-
-        .mobile_filter_sidebar .ul_li_block li {
-            margin-bottom: 10px;
-        }
-
-        .mobile_filter_sidebar .checkbox_item {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .mobile_filter_sidebar .checkbox_item input[type="checkbox"] {
-            margin: 0;
-            flex: 0 0 auto;
-        }
-
-        .mobile_filter_sidebar .checkbox_item label {
-            margin: 0;
-            font-size: 14px;
-            line-height: 1.4;
-            word-break: break-word;
-        }
-    }
-
-    /* Product grid fix */
-    .electronic_product_columns {
-        display: flex;
-        flex-wrap: wrap;
-        margin: 0 -8px;
-        padding: 0;
-    }
-
-    .electronic_product_columns>li {
-        list-style: none;
-        padding: 8px;
-    }
-
-    @media (min-width: 1200px) {
-        .electronic_product_columns>li {
-            width: 25%;
-        }
-    }
-
-    @media (min-width: 768px) and (max-width: 1199px) {
-        .electronic_product_columns>li {
-            width: 33.3333%;
-        }
-    }
-
-    @media (min-width: 576px) and (max-width: 767px) {
-        .electronic_product_columns>li {
-            width: 50%;
-        }
-    }
-
-    @media (max-width: 575px) {
-        .electronic_product_columns>li {
-            width: 100%;
-        }
-    }
-
-    /* Product card mobile fix */
-    .electronic_product_item {
-        height: 100%;
-        border-radius: 12px;
-        overflow: hidden;
-    }
-
-    .electronic_product_item .item_image {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 15px;
-    }
-
-    .electronic_product_item .item_image img {
-        max-width: 100%;
-        height: auto;
-        max-height: 180px;
-        object-fit: contain;
-    }
-
-    .electronic_product_item .item_content {
-        padding: 12px 14px 16px;
-    }
-
-    .electronic_product_item .item_title {
-        font-size: 15px;
-        line-height: 1.4;
-        margin-bottom: 8px;
-    }
-
-    .electronic_product_item .item_price {
-        font-size: 16px;
-        display: block;
-        margin-bottom: 8px;
-    }
-
     .koko_wrap {
         display: flex;
-        flex-wrap: wrap;
         align-items: center;
         gap: 6px;
-        font-size: 12px;
-        line-height: 1.5;
+        font-weight: 600 !important;
+        margin-top: 5px;
+        font-size: 18px;
+        color: #687188;
+        ;
+    }
+
+
+    .koko_inline {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        font-size: 13px;
+        color: #687188;
+    }
+
+    .koko_inline img {
+        height: 14px;
     }
 
     .koko_logo {
-        height: 14px;
+        height: 25px;
         width: auto;
     }
 
-    @media (max-width: 575px) {
-        .electronic_product_item .item_image {
-            padding: 12px;
-        }
+    .fonivo_price_box {
+        margin-bottom: 15px;
+    }
 
-        .electronic_product_item .item_image img {
-            max-height: 150px;
-        }
+    /* Main Price */
+    .fonivo_price {
+        font-size: 28px;
+        font-weight: 700;
+        color: #e60023;
+        margin-bottom: 8px;
+    }
 
-        .electronic_product_item .item_content {
-            padding: 12px;
-        }
 
-        .electronic_product_item .item_title {
-            font-size: 14px;
-        }
+    .fonivo_meta_grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 15px;
+        margin-top: 21px;
+        margin-bottom: 20px;
+    }
 
-        .electronic_product_item .item_price {
-            font-size: 15px;
-        }
+    .fonivo_meta_card {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 15px;
+        border-radius: 12px;
+        color: #333e48;
+        border: 1px solid #eee;
+        transition: 0.3s;
+    }
 
-        .koko_wrap {
-            font-size: 11px;
+    .fonivo_meta_card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+    }
+
+    .fonivo_meta_card .icon {
+        font-size: 22px;
+        color: #e60023;
+        min-width: 35px;
+    }
+
+    .fonivo_meta_card .content span {
+        font-size: 16px;
+        font-weight: 600;
+        display: block;
+        margin-bottom: 3px;
+    }
+
+    .fonivo_meta_card .content p {
+        font-size: 14px;
+        color: #6b6b6b;
+        margin: 0;
+        line-height: 1.4;
+    }
+
+    /* CTA Box */
+    .fonivo_cta_box {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        background: linear-gradient(135deg, #e60023, #ff4d6d);
+        color: #fff;
+        padding: 14px 18px;
+        border-radius: 10px;
+        font-weight: 600;
+        font-size: 14px;
+        box-shadow: 0 5px 15px rgba(230, 0, 35, 0.2);
+    }
+
+    .fonivo_cta_box i {
+        font-size: 18px;
+    }
+
+    /* Mobile */
+    @media (max-width: 768px) {
+        .fonivo_meta_grid {
+            grid-template-columns: 1fr;
         }
     }
 
-    /* Header/mobile menu spacing fix */
-    @media (max-width: 991px) {
-        .sidebar_mobile_menu {
-            margin-top: 0 !important;
-            padding-top: 18px;
-        }
-
-        .header_middle {
-            padding: 10px 0;
-        }
-
-        .brand_logo {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 10px;
-        }
-
-        .logo_img {
-            height: 42px !important;
-            margin-left: 0 !important;
-            max-width: 140px;
-        }
-
-        .mh_action_btns {
-            display: flex;
-            align-items: center;
-            margin: 0;
-            gap: 8px;
-        }
-
-        .mh_action_btns li {
-            margin: 0;
-        }
+    .fonivo_brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
     }
 
-    /* Banner and load more button fix */
-    @media (max-width: 991px) {
-        .advertisement_image img {
-            width: 100%;
-            height: auto;
-
-        }
-
-        .abtn_wrap {
-            margin-bottom: 25px !important;
-        }
+    .fonivo_brand img {
+        height: 24px;
     }
 
-    /* Extra small device polish */
-    @media (max-width: 480px) {
-        .mobile_filter_sidebar .sb_widget {
-            padding: 14px;
-            border-radius: 10px;
-            margin-bottom: 0px !important;
-        }
-
-        .mobile_filter_sidebar .sb_widget_title {
-            font-size: 14px;
-        }
-
-        .mobile_filter_sidebar .checkbox_item label {
-            font-size: 13px;
-        }
-
-        .ce_breadcrumb_nav {
-            font-size: 11px;
-        }
-    }
-</style>
-<style>
     .map_wrapper {
         width: 100%;
         overflow: hidden;
@@ -626,6 +375,10 @@
     }
 
     @media (max-width: 575px) {
+        .inq-mob {
+            margin-top: -20px !important;
+        }
+
         .header_top {
 
             min-height: 40px !important;
@@ -934,43 +687,29 @@
 </style>
 
 <style>
-    .supermarket_section_title .title_text {
+    /* .supermarket_section_title .title_text {
         font-family: "Lexend Deca", Arial, Helvetica, sans-serif;
         font-size: 40px;
-    }
+    } */
 
     s .supermarket_deals_item .item_title a {
         font-size: 20px;
     }
 
-    .home_supermarket h1,
+    /* .home_supermarket h1,
     .home_supermarket h2,
     .home_supermarket h3,
     .home_supermarket h4,
     .home_supermarket h5,
     .home_supermarket h6 {
         font-family: "Lexend Deca", Arial, Helvetica, sans-serif;
-    }
+    } */
 
     .supermarket_tab_nav a:hover,
     .supermarket_tab_nav a.active {
         color: #333e48;
         background-color: #ffffff;
         border-color: #000000;
-    }
-
-    .koko_wrap {
-        display: flex;
-        align-items: center;
-        gap: 6px;
-        margin-top: 5px;
-        font-size: 13px;
-        color: #687188;
-        ;
-    }
-
-    .koko_logo {
-        height: 16px;
     }
 </style>
 
@@ -1142,7 +881,7 @@
 
 
 
-      <!-- sidebar mobile menu & sidebar cart - start
+     <!-- sidebar mobile menu & sidebar cart - start
    ================================================== -->
         <div class="sidebar_mobile_menu " style="background: #000;">
 
@@ -1206,7 +945,7 @@
    ================================================== -->
         <section class="">
 
-            <div class="container maxw_1600 breadcrumb_mob">
+            <div class="container maxw_1600">
                 <div class="f2_breadcrumb_nav_wrap">
                     <ul class="ce_breadcrumb_nav ul_li clearfix">
                         <li><a href="#!">Home</a></li>
@@ -1223,218 +962,255 @@
 
 
 
-        <!-- product_section - start
+        <!-- electronic_details - start
    ================================================== -->
-        <section class="product_section clearfix">
+        <section class="electronic_details clearfix">
             <div class="container maxw_1600">
-                <div class="row justify-content-lg-between align-items-start">
 
+                <div class="row mb_50 justify-content-lg-between">
 
-                    <div class="col-12 col-lg-9 order-2 order-lg-2">
+                    {{-- LEFT: IMAGE --}}
+                    <div class="col-lg-5">
+                        <div class="details_image mb_30 position-relative">
 
-                        <div class="mobile_filter_toggle_wrap d-lg-none">
-                            <button type="button" class="mobile_filter_toggle_btn" id="mobileFilterToggle">
-                                <i class="far fa-sliders-h mr-2"></i>
-                                Filters
-                            </button>
-                        </div>
+                            @php
 
-                        <div class="tab-content mb_50">
-                            <div id="grid_layout" class="tab-pane active">
+                                $backendUrl = config('app.backend_url');
 
-                                <ul class="electronic_product_columns ul_li has_4columns clearfix">
+                                $image = $accessory->image;
 
-                                    @forelse($accessories as $item)
-                                        <li>
-                                            <div class="electronic_product_item">
+                                $webpImage = $image ? pathinfo($image, PATHINFO_FILENAME) . '.webp' : null;
 
-                                                {{-- STATUS --}}
-                                                <ul class="product_label ul_li clearfix">
-                                                    <li
-                                                        data-bg-color="{{ $item->status == 1 ? '#28a745' : '#dc3545' }}">
-                                                        {{ $item->status == 1 ? 'In Stock' : 'Out of Stock' }}
-                                                    </li>
-                                                </ul>
+                            @endphp
 
-                                                @php
+                            <div class="image_wrap">
 
-                                                    $backendUrl = config('app.backend_url');
-
-                                                    $image = $item->image;
-
-                                                    $webpImage = $image
-                                                        ? pathinfo($image, PATHINFO_FILENAME) . '.webp'
-                                                        : null;
-
-                                                @endphp
-
-                                                {{-- IMAGE --}}
-                                                <div class="item_image">
-
-                                                    <img src="{{ $image ? $backendUrl . '/storage/accessories/' . $webpImage : asset('assets/images/no-image.png') }}"
-                                                        alt="{{ $item->name }}" loading="lazy"
-                                                        onerror="this.onerror=null;
+                                <img src="{{ $image ? $backendUrl . '/storage/accessories/' . $webpImage : asset('assets/images/no-image.png') }}"
+                                    alt="{{ $accessory->name }}" loading="lazy"
+                                    onerror="this.onerror=null;
                   this.src='{{ $image ? $backendUrl . '/storage/accessories/' . $image : asset('assets/images/no-image.png') }}';">
 
-                                                </div>
-
-                                                {{-- CONTENT --}}
-                                                <div class="item_content">
-
-                                                    <h3 class="item_title">
-                                                        <a href="{{ route('accessories.detail', $item->id) }}">
-                                                            {{ $item->name }}
-                                                        </a>
-                                                    </h3>
-
-                                                    <span class="item_price">
-                                                        Rs. {{ number_format($item->price) }}
-                                                    </span>
-
-                                                    @if ($item->category)
-                                                        <div class="item_category">
-                                                            <small>{{ $item->category }}</small>
-                                                        </div>
-                                                    @endif
-
-                                                </div>
-
-                                            </div>
-                                        </li>
-                                    @empty
-                                        <li>
-                                            <p>No accessories found</p>
-                                        </li>
-                                    @endforelse
-
-                                </ul>
-
                             </div>
-                        </div>
 
-                        <div class="abtn_wrap text-center mb_50">
-                            <a href="#!" class="custom_btn btn_border border_electronic">Load more</a>
-                        </div>
-
-                        <div class="advertisement_image" style="padding-bottom: 30px;">
-                            <a href="#!">
-                                <img src="assets/images/add/kokod.png" alt="image_not_found">
-                            </a>
                         </div>
                     </div>
-                    <div class="col-12 col-lg-3 order-1 order-lg-1 mb-4">
-                        <div class="mobile_filter_sidebar_wrap" id="mobileFilterWrapper">
 
-                            <aside class="electronic_sidebar sidebar_section mobile_filter_sidebar">
+                    {{-- RIGHT: CONTENT --}}
+                    <div class="col-lg-7">
+                        <div class="details_content fonivo_details_content">
 
-                                <form method="GET" action="{{ route('accessories.grid') }}">
+                            {{-- CATEGORY + STOCK --}}
+                            <div class="fonivo_top_row d-flex align-items-center justify-content-between mb_20">
 
-                                    {{-- PRICE RANGE --}}
-                                    <div class="sb_widget sb_pricing_range filter_card">
-                                        <h3 class="sb_widget_title text-uppercase">Price Range</h3>
+                                <span class="item_brand text-uppercase fonivo_brand">
+                                    {{ $accessory->category ?? 'Accessories' }}
+                                </span>
 
-                                        <div class="price-range-area clearfix">
+                                <span class="instock_text fonivo_availability">
+                                    Availability:
+                                    <strong
+                                        class="fonivo_stock_badge {{ $accessory->status == 1 ? '' : 'sold_out' }}">
+                                        {{ $accessory->status == 1 ? 'In Stock' : 'Out of Stock' }}
+                                    </strong>
+                                </span>
 
-                                            <div id="slider-range" class="slider-range"></div>
+                            </div>
 
-                                            <div class="price-text d-flex align-items-center">
-                                                <span>Price:</span>
-                                                <input type="text" id="amount" readonly>
-                                            </div>
+                            {{-- TITLE --}}
+                            <h2 class="item_title fonivo_title mb_20">
+                                {{ $accessory->name }}
+                            </h2>
 
-                                            <input type="hidden" name="min_price" id="min_price"
-                                                value="{{ request('min_price') }}">
-                                            <input type="hidden" name="max_price" id="max_price"
-                                                value="{{ request('max_price') }}">
+                            <hr>
 
+
+
+                            {{-- PRICE --}}
+                            <span class="item_price mb_10">
+                                <strong>Rs. {{ number_format($accessory->price) }}</strong>
+                            </span>
+
+                            {{-- POINTS --}}
+                            @if (!empty($accessory->points))
+                                <ul class="product_info_list ul_li_block mb_15 clearfix">
+
+                                    @foreach ($accessory->points as $point)
+                                        <li>
+                                            <span class="label">✔</span>
+                                            <strong>{{ $point }}</strong>
+                                        </li>
+                                    @endforeach
+
+                                </ul>
+                            @endif
+
+
+                            {{-- DESCRIPTION --}}
+                            @if ($accessory->description)
+                                <p class="mb-2 mt-2">
+                                    {{ $accessory->description }}
+                                </p>
+                            @endif
+
+
+                            <hr>
+
+                            {{-- META BOXES --}}
+                            <div class="fonivo_meta_grid mb_25">
+
+                                <div class="fonivo_meta_card">
+                                    <div class="icon"><i class="fal fa-shield-check"></i></div>
+                                    <div class="content">
+                                        <span>Warranty</span>
+                                        <p>{{ $accessory->warranty ?? 'No Warranty' }}</p>
+                                    </div>
+                                </div>
+
+                                <div class="fonivo_meta_card">
+                                    <div class="icon"><i class="fal fa-credit-card"></i></div>
+                                    <div class="content">
+                                        <span>Payments</span>
+                                        <p>Cash / Card / Online</p>
+                                    </div>
+                                </div>
+
+                                <div class="fonivo_meta_card">
+                                    <div class="icon"><i class="fal fa-truck"></i></div>
+                                    <div class="content">
+                                        <span>Delivery</span>
+                                        <p>{{ $accessory->delivery_note ?? 'Islandwide Delivery' }}</p>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            {{-- CTA --}}
+                            <div class="row align-items-center">
+                                <div class="col-lg-10">
+                                    <div class="product_tag_list d-flex align-items-center clearfix">
+                                        <h4 class="list_title">
+                                            Order Now – Limited Stock Available!
+                                        </h4>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+                <hr>
+
+            </div>
+        </section>
+        <!-- electronic_details - end
+   ================================================== -->
+
+        <section class="main_contact_section sec_ptb_50 clearfix">
+            <div class="container">
+                <div class="row justify-content-lg-between">
+
+                    <!-- LEFT SIDE -->
+                    <div class="col-lg-5 inq-mob">
+                        <div class="main_contact_content fonivo_inquiry_content">
+                            <h3 class="title_text mb_15">Product Inquiry</h3>
+                            <p class="mb_30">
+                                Interested in this product? Contact us for availability, best price, or more details.
+                            </p>
+
+                            <ul class="main_contact_info ul_li_block clearfix">
+                                <li>
+                                    <span class="icon">
+                                        <i class="fal fa-phone-volume"></i>
+                                    </span>
+                                    <p class="mb-0">Call / WhatsApp<br><strong>077 400 6216</strong></p>
+                                </li>
+
+                                <li>
+                                    <span class="icon">
+                                        <i class="fab fa-whatsapp"></i>
+                                    </span>
+                                    <p class="mb-0">
+                                        Quick WhatsApp Support<br>
+                                        <a href="https://wa.me/94774006216" target="_blank">Chat Now</a>
+                                    </p>
+                                </li>
+
+                                <li>
+                                    <span class="icon">
+                                        <i class="fal fa-truck"></i>
+                                    </span>
+                                    <p class="mb-0">Islandwide Delivery Available</p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- RIGHT SIDE -->
+                    <div class="col-lg-7 inq-mob">
+                        <div class="main_contact_form fonivo_inquiry_form">
+                            <h3 class="title_text mb_30">Send Inquiry</h3>
+                            @if (session('success'))
+                                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                    {{ session('success') }}
+
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                        aria-label="Close"></button>
+                                </div>
+                            @endif
+
+                            @if ($errors->any())
+                                <div class="alert alert-danger">
+                                    <ul class="mb-0">
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endif
+                            <form action="{{ route('inquiry.store') }}" method="POST">
+                                @csrf
+
+                                <input type="hidden" name="item_type" value="accessory">
+                                <input type="hidden" name="item_id" value="{{ $accessory->id }}">
+
+                                <div class="row">
+
+                                    <div class="col-lg-6">
+                                        <div class="form_item">
+                                            <input type="text" name="name" placeholder="Your Name" required>
                                         </div>
                                     </div>
 
-                                    {{-- CATEGORY FILTER --}}
-                                    <div class="sb_widget sb_color_checkbox">
-                                        <h3 class="sb_widget_title text-uppercase">Category</h3>
-
-                                        <ul class="ul_li_block clearfix">
-                                            @foreach ($categoryList as $category)
-                                                <li>
-                                                    <div class="checkbox_item">
-                                                        <input type="checkbox" name="category[]"
-                                                            value="{{ $category }}" id="cat_{{ $loop->index }}"
-                                                            {{ request()->has('category') && in_array($category, request()->category ?? []) ? 'checked' : '' }}>
-
-                                                        <label for="cat_{{ $loop->index }}">
-                                                            {{ $category }}
-                                                        </label>
-                                                    </div>
-                                                </li>
-                                            @endforeach
-                                        </ul>
+                                    <div class="col-lg-6">
+                                        <div class="form_item">
+                                            <input type="text" name="phone" placeholder="Phone Number" required>
+                                        </div>
                                     </div>
 
-                                    {{-- STATUS FILTER --}}
-                                    <div class="sb_widget sb_color_checkbox">
-                                        <h3 class="sb_widget_title text-uppercase">Availability</h3>
+                                </div>
 
-                                        <ul class="ul_li_block clearfix">
+                                <div class="form_item">
+                                    <textarea name="message" placeholder="Your message"></textarea>
+                                </div>
 
-                                            <li>
-                                                <div class="checkbox_item">
-                                                    <input type="checkbox" name="status[]" value="1"
-                                                        id="status_instock"
-                                                        {{ request()->has('status') && in_array('1', request()->status ?? []) ? 'checked' : '' }}>
+                                <button type="submit" class="custom_btn bg_default_red text-uppercase">
+                                    Send Inquiry
+                                </button>
 
-                                                    <label for="status_instock">
-                                                        In Stock
-                                                    </label>
-                                                </div>
-                                            </li>
-
-                                            <li>
-                                                <div class="checkbox_item">
-                                                    <input type="checkbox" name="status[]" value="0"
-                                                        id="status_outstock"
-                                                        {{ request()->has('status') && in_array('0', request()->status ?? []) ? 'checked' : '' }}>
-
-                                                    <label for="status_outstock">
-                                                        Out of Stock
-                                                    </label>
-                                                </div>
-                                            </li>
-
-                                        </ul>
-                                    </div>
-
-                                    {{-- APPLY --}}
-                                    <div class="mt-3">
-                                        <button type="submit" class="btn btn-dark w-100">
-                                            Apply Filters
-                                        </button>
-                                    </div>
-
-                                    {{-- RESET --}}
-                                    <div class="mt-2">
-                                        <a href="{{ route('accessories.grid') }}" class="btn btn-light w-100">
-                                            Clear Filters
-                                        </a>
-                                    </div>
-
-                                </form>
-
-                            </aside>
+                            </form>
                         </div>
                     </div>
 
                 </div>
             </div>
         </section>
-        <!-- product_section - end
-   ================================================== -->
 
 
     </main>
     <!-- main body - end
   ================================================== -->
-
 
     <!-- footer_section - start
   ================================================== -->
@@ -1495,90 +1271,50 @@
     <!-- footer_section - end
   ================================================== -->
 
-    <!-- fraimwork - jquery include -->
-    <script src="assets/js/jquery-3.5.1.min.js"></script>
-    <script src="assets/js/popper.min.js"></script>
-    <script src="assets/js/bootstrap.min.js"></script>
 
-    <!-- mobile menu - jquery include -->
-    <script src="assets/js/mCustomScrollbar.js"></script>
+    {{-- ================= CORE JS ================= --}}
+    <script src="{{ asset('assets/js/jquery-3.5.1.min.js') }}"></script>
+    <script src="{{ asset('assets/js/popper.min.js') }}"></script>
+    <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
 
-    <!-- animation - jquery include -->
-    <script src="assets/js/parallaxie.js"></script>
-    <script src="assets/js/wow.min.js"></script>
+    {{-- ================= PLUGINS ================= --}}
+    <script src="{{ asset('assets/js/mCustomScrollbar.js') }}"></script>
+    <script src="{{ asset('assets/js/parallaxie.js') }}"></script>
+    <script src="{{ asset('assets/js/wow.min.js') }}"></script>
+    <script src="{{ asset('assets/js/nice-select.min.js') }}"></script>
+    <script src="{{ asset('assets/js/slick.min.js') }}"></script>
+    <script src="{{ asset('assets/js/countdown.js') }}"></script>
+    <script src="{{ asset('assets/js/magnific-popup.min.js') }}"></script>
 
-    <!-- nice select - jquery include -->
-    <script src="assets/js/nice-select.min.js"></script>
+    {{-- ================= LAYOUT / UI ================= --}}
+    <script src="{{ asset('assets/js/isotope.pkgd.min.js') }}"></script>
+    <script src="{{ asset('assets/js/masonry.pkgd.min.js') }}"></script>
+    <script src="{{ asset('assets/js/imagesloaded.pkgd.min.js') }}"></script>
+    <script src="{{ asset('assets/js/jquery-ui.js') }}"></script>
 
-    <!-- carousel - jquery include -->
-    <script src="assets/js/slick.min.js"></script>
+    {{-- ================= CUSTOM ================= --}}
+    <script src="{{ asset('assets/js/custom.js') }}"></script>
 
-    <!-- countdown timer - jquery include -->
-    <script src="assets/js/countdown.js"></script>
-
-    <!-- popup images & videos - jquery include -->
-    <script src="assets/js/magnific-popup.min.js"></script>
-
-    <!-- filtering & masonry layout - jquery include -->
-    <script src="assets/js/isotope.pkgd.min.js"></script>
-    <script src="assets/js/masonry.pkgd.min.js"></script>
-    <script src="assets/js/imagesloaded.pkgd.min.js"></script>
-
-    <!-- jquery ui - jquery include -->
-    <script src="assets/js/jquery-ui.js"></script>
-
-    <!-- custom - jquery include -->
-    <script src="assets/js/custom.js"></script>
+    {{-- ================= CDN (Swiper if needed) ================= --}}
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
 
 
     <script>
-        $(document).ready(function() {
-            $('#mobileFilterToggle').on('click', function() {
-                $('#mobileFilterWrapper').toggleClass('active');
+        setTimeout(() => {
+            document.querySelectorAll('.alert').forEach(alert => {
+                alert.classList.remove('show');
+                alert.classList.add('fade');
 
-                if ($('#mobileFilterWrapper').hasClass('active')) {
-                    $(this).html('<i class="far fa-times mr-2"></i> Close Filters');
-                } else {
-                    $(this).html('<i class="far fa-sliders-h mr-2"></i> Filter Products');
-                }
+                setTimeout(() => {
+                    alert.remove();
+                }, 500);
             });
-        });
+        }, 4000);
     </script>
 
-    <script>
-        $(function() {
+    {{-- PAGE SPECIFIC SCRIPTS --}}
+    @stack('scripts')
 
-            let min = {{ $minPrice ?? 0 }};
-            let max = {{ $maxPrice ?? 500000 }};
-
-            $("#slider-range").slider({
-                range: true,
-                min: min,
-                max: max,
-                values: [
-                    {{ request('min_price') ?? ($minPrice ?? 0) }},
-                    {{ request('max_price') ?? ($maxPrice ?? 500000) }}
-                ],
-                slide: function(event, ui) {
-                    $("#amount").val("Rs. " + ui.values[0] + " - Rs. " + ui.values[1]);
-
-                    $("#min_price").val(ui.values[0]);
-                    $("#max_price").val(ui.values[1]);
-                }
-            });
-
-            // initial display
-            $("#amount").val(
-                "Rs. " + $("#slider-range").slider("values", 0) +
-                " - Rs. " + $("#slider-range").slider("values", 1)
-            );
-
-            $("#min_price").val($("#slider-range").slider("values", 0));
-            $("#max_price").val($("#slider-range").slider("values", 1));
-
-        });
-    </script>
-    <div class="filter_overlay" id="filterOverlay"></div>
 </body>
 
 </html>

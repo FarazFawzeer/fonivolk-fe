@@ -40,6 +40,115 @@
 </head>
 
 <style>
+
+
+/* ── Mobile: 2 columns, full-cover image ── */
+@media (max-width: 767px) {
+
+  /* Force 2-column grid */
+  ul.supermarket_product_columns.has_4columns {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  ul.supermarket_product_columns.has_4columns > li {
+    width: 50% !important;
+    padding: 4px !important;
+    box-sizing: border-box;
+  }
+
+  /* Make the anchor a fixed-ratio box */
+  .supermarket_product_item .item_image {
+    display: block;
+    width: 100%;
+    aspect-ratio: 1 / 1;   /* square; change to 4/5 for portrait */
+    overflow: hidden;
+    position: relative;
+  }
+
+  /* Image fully covers the box — no whitespace, no distortion */
+  .supermarket_product_item .item_image img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .koko_wrap {
+  font-size: 8px !important;
+  
+}
+}
+
+    @media (max-width: 768px) {
+        .desktop_only {
+            display: none !important;
+        }
+
+        .supermarket_section_title .title_text {
+        font-family: "Lexend Deca", Arial, Helvetica, sans-serif;
+        font-size: 30px !important;
+    }
+
+    .supermarket_section_title .sub_title {
+  color: #b3b3b3;
+  line-height: 1;
+  display: block;
+  font-size: 1px;
+  margin-bottom: 10px;
+}
+    }
+
+    .supermarket_product_item .item_image img {
+        max-height: 100% !important;
+        transition: 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+    .supermarket_footer .form_item .submit_btn {
+        top: 50%;
+        right: 0px;
+        height: 60px;
+        color: #ffffff;
+        line-height: 60px;
+        padding: 0px 35px;
+        text-align: center;
+        position: absolute;
+        margin-right: -1px;
+        background-color: #090909;
+        transform: translateY(-50%);
+        border-top-right-radius: 45px;
+        border-bottom-right-radius: 45px;
+    }
+
+    @media (max-width: 991px) {
+
+        .mh_action_btns .cart_btn,
+        .mh_action_btns .mobile_menu_btn {
+            background: transparent !important;
+            box-shadow: none !important;
+            border: none !important;
+            color: #fff !important;
+        }
+
+        .mh_action_btns .cart_btn i,
+        .mh_action_btns .mobile_menu_btn i {
+            color: #fff !important;
+        }
+    }
+
+    .supermarket_header .main_menu>ul>li>a {
+        color: #ffffff !important;
+    }
+
+    .supermarket_product_item .item_image {
+        min-height: 250px;
+             
+    }
+
+    
+
     .supermarket_product_item .product_label li {
         height: 25px;
         font-size: 12px;
@@ -102,6 +211,7 @@
         height: 650px !important;
     }
 
+
     @media (max-width: 991px) {
         .add_video {
             margin-top: -42px !important;
@@ -155,6 +265,11 @@
 
     /* Desktop settings */
     @media (min-width: 992px) {
+
+        .ad_video {
+            height:765px !important;
+        }
+
         .policy_swiper .swiper-wrapper {
             display: flex;
             gap: 0;
@@ -298,10 +413,10 @@
         align-items: center;
         /* vertical center */
         text-align: center;
-        padding-bottom: 0px !important;
+        padding-bottom: 10px !important;
     }
-    
-    
+
+
 
     .sidebar_mobile_menu {
         margin-top: -63px;
@@ -327,10 +442,10 @@
         position: relative;
         width: 100%;
         overflow: hidden;
-       border-radius: 10px ;
+        border-radius: 10px;
     }
-    
-    
+
+
 
     .bg_video {
         width: 100%;
@@ -535,10 +650,11 @@
 
     <!-- header_section - start
   ================================================== -->
-    <header class="header_section supermarket_header bg-white clearfix">
+    <header class="header_section supermarket_header bg-white clearfix"
+        style="background-color: rgba(0, 0, 0, 1) !important;">
 
         {{-- TOP BAR --}}
-        <div class="header_top text-white clearfix">
+        {{-- <div class="header_top text-white clearfix">
             <div class="container maxw_1460">
                 <div class="row align-items-center justify-content-lg-between">
 
@@ -572,11 +688,11 @@
 
                 </div>
             </div>
-        </div>
+        </div> --}}
 
         {{-- MIDDLE HEADER --}}
         <div class="header_middle clearfix">
-            <div class="container maxw_1460">
+            <div class="container">
                 <div class="row align-items-center justify-content-lg-between">
 
                     {{-- LOGO --}}
@@ -584,8 +700,8 @@
                         <div class="brand_logo">
 
                             <a class="brand_link" href="{{ url('/') }}">
-                                <img src="{{ asset('assets/images/logo/fonivo2.png') }}" class="logo_img" alt="logo"
-                                    style="height: 60px;">
+                                <img src="{{ asset('assets/images/logo/fonivow3.png') }}" class="logo_img"
+                                    alt="logo" style="height: 70px;">
                             </a>
 
                             <ul class="mh_action_btns ul_li clearfix">
@@ -608,8 +724,9 @@
 
                     {{-- MENU --}}
                     <div class="col-lg-6">
-                        <nav class="main_menu d-flex justify-content-center">
-                            <ul class="ul_li d-flex justify-content-center align-items-center">
+                        <nav class="main_menu d-flex justify-content-center" style=" color: #ffffff !important; ">
+                            <ul class="ul_li d-flex justify-content-center align-items-center"
+                                style=" color: #ffffff !important; ">
 
                                 <li><a href="{{ url('/') }}">Home</a></li>
 
@@ -617,8 +734,8 @@
                                     <a href="{{ route('products.index') }}">Phones</a>
                                 </li>
 
-                                <li><a href="#!">Accessories</a></li>
-                                <li><a href="#!">About us</a></li>
+                                <li><a href="{{ route('accessories.grid') }}">Accessories</a></li>
+
                                 <li><a href="{{ url('/contact') }}">Contact us</a></li>
 
                             </ul>
@@ -632,23 +749,20 @@
                             <ul class="action_btns_group ul_li_right clearfix">
                                 <li>
                                     <button type="button">
-                                        <span>Need</span>
-                                        <strong>Help?</strong>
+                                        <span style="color: #373333;">Need</span>
+                                        <strong style="color: #ffffff;">Help?</strong>
                                     </button>
                                 </li>
 
                                 <li>
                                     <button type="button" class="cart_btn"
                                         onclick="window.location.href='{{ url('/contact') }}'">
-                                        <i class="fal fa-headset"></i>
+                                        <i class="fal fa-headset" style="color: #ffffff;"></i>
                                     </button>
                                 </li>
                             </ul>
 
-                            <span class="alart_text float-right fonivo-note">
-                                <small>✔</small>
-                                Trusted service!
-                            </span>
+
 
                         </div>
                     </div>
@@ -685,86 +799,72 @@
 
         <!-- sidebar mobile menu & sidebar cart - start
    ================================================== -->
-     <div class="sidebar_mobile_menu">
+        <div class="sidebar_mobile_menu " style="background: #000;">
 
-    {{-- CLOSE BUTTON --}}
-    <button type="button" class="close_btn">
-        <i class="fal fa-times"></i>
-    </button>
+            {{-- CLOSE BUTTON --}}
+            <button type="button" class="close_btn">
+                <i class="fal fa-times" style="color: #fff"></i>
+            </button>
 
-    {{-- LOGO --}}
-    <div class="msb_widget brand_logo text-center">
-        <a href="{{ url('/') }}">
-            <img src="{{ asset('assets/images/logo/fonivo2.png') }}"
-                 alt="Fonivo Logo"
-                 style="max-height: 70px;">
-        </a>
-    </div>
-
-    {{-- MENU --}}
-    <div class="msb_widget mobile_menu_list clearfix">
-
-        <h3 class="title_text mb_15 text-uppercase">
-            Menu List
-        </h3>
-
-        <ul class="ul_li_block clearfix fonivo_mobile_nav">
-
-            <li>
+            {{-- LOGO --}}
+            <div class="msb_widget brand_logo text-center mb-3">
                 <a href="{{ url('/') }}">
-                    <i class="fal fa-home mr-2"></i> Home
+                    <img src="{{ asset('assets/images/logo/fonivow3.png') }}" alt="Fonivo Logo"
+                        style="max-height: 70px;">
                 </a>
-            </li>
+            </div>
 
-            <li>
-                <a href="{{ route('products.index') }}">
-                    <i class="fal fa-mobile-alt mr-2"></i> Phones
-                </a>
-            </li>
+            {{-- MENU --}}
+            <div class=" mobile_menu_list clearfix">
 
-            <li>
-                <a href="#!">
-                    <i class="fal fa-headphones-alt mr-2"></i> Accessories
-                </a>
-            </li>
+                
+                <ul class="ul_li_block clearfix fonivo_mobile_nav">
 
-            <li>
-                <a href="#!">
-                    <i class="fal fa-info-circle mr-2"></i> About Us
-                </a>
-            </li>
+                    <li>
+                        <a href="{{ url('/') }}" style="color: #fff;">
+                           Home
+                        </a>
+                    </li>
 
-            <li>
-                <a href="{{ url('/contact') }}">
-                    <i class="fal fa-envelope mr-2"></i> Contact Us
-                </a>
-            </li>
+                    <li>
+                        <a href="{{ route('products.index') }}" style="color: #fff; ">
+                             Phones
+                        </a>
+                    </li>
 
-        </ul>
-    </div>
+                    <li>
+                        <a href="{{ route('accessories.grid') }}" style="color: #fff; ">
+                            Accessories
+                        </a>
+                    </li>
 
-    {{-- NOTE --}}
-    <div class="msb_widget fonivo_mobile_note">
-        <span>
-            <i class="fas fa-check-circle mr-1"></i>
-            Genuine trusted service!
-        </span>
-    </div>
 
-</div>
+
+                    <li>
+                        <a href="{{ url('/contact') }}" style="color: #fff; ">
+                           Contact Us
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+
+          
+
+        </div>
         <!-- sidebar mobile menu & sidebar cart - end
    ================================================== -->
 
 
         <!-- slider_section - start
    ================================================== -->
-        <section class="video_banner" style="background-color: #ffffff; padding: 40px 0;">
+        <section class="video_banner" style="background-color: rgba(0, 0, 0, 1); padding: 40px 0;">
             <div class="container ">
 
                 <!-- Video Background -->
                 <div class="video_wrapper">
                     <video autoplay muted loop playsinline class="bg_video">
-                        <source src="{{ asset('assets/videos/banner6.mp4') }}" type="video/mp4">
+                        <source src="{{ asset('assets/videos/Hero-Banner.mp4') }}" type="video/mp4">
                     </video>
 
                     <!-- Overlay -->
@@ -850,79 +950,7 @@
    ================================================== -->
         <!-- policy_section - start
 ================================================== -->
-        <section class="policy_section sec_ptb_50 pb-0 clearfix">
-            <div class="container maxw_1460">
-                <div class="supermarket_policy clearfix">
 
-                    <div class="swiper policy_swiper">
-                        <div class="swiper-wrapper">
-
-                            <div class="swiper-slide">
-                                <div class="supermarket_policy_item clearfix">
-                                    <div class="item_icon">
-                                        <img src="assets/images/icons/supermarket/icon_12.png" alt="icon_not_found">
-                                    </div>
-                                    <div class="item_content">
-                                        <h3 class="text-uppercase">Free Delivery</h3>
-                                        <p>For all order over</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="swiper-slide">
-                                <div class="supermarket_policy_item clearfix">
-                                    <div class="item_icon">
-                                        <img src="assets/images/icons/supermarket/icon_13.png" alt="icon_not_found">
-                                    </div>
-                                    <div class="item_content">
-                                        <h3 class="text-uppercase">Safe Payment</h3>
-                                        <p>100% secure payment</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="swiper-slide">
-                                <div class="supermarket_policy_item clearfix">
-                                    <div class="item_icon">
-                                        <img src="assets/images/icons/supermarket/icon_14.png" alt="icon_not_found">
-                                    </div>
-                                    <div class="item_content">
-                                        <h3 class="text-uppercase">Shop with Confidence</h3>
-                                        <p>If goods have problems</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="swiper-slide">
-                                <div class="supermarket_policy_item clearfix">
-                                    <div class="item_icon">
-                                        <img src="assets/images/icons/supermarket/icon_15.png" alt="icon_not_found">
-                                    </div>
-                                    <div class="item_content">
-                                        <h3 class="text-uppercase">24/7 Help Center</h3>
-                                        <p>Dedicated 24/7 support</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="swiper-slide">
-                                <div class="supermarket_policy_item clearfix">
-                                    <div class="item_icon">
-                                        <img src="assets/images/icons/supermarket/icon_16.png" alt="icon_not_found">
-                                    </div>
-                                    <div class="item_content">
-                                        <h3 class="text-uppercase">Friendly Services</h3>
-                                        <p>Satisfaction guarantee</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </section>
         <!-- policy_section - end
 ================================================== -->
 
@@ -942,12 +970,12 @@
                         <div class="gray_line"></div>
                     </div>
 
-                    <div class="col-lg-2">
+                    {{-- <div class="col-lg-2">
                         <div class="carousel_nav align_right">
                             <button type="button" class="left_arrow5"><i class="fal fa-arrow-left"></i></button>
                             <button type="button" class="right_arrow5"><i class="fal fa-arrow-right"></i></button>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
 
                 <div class="supermarket_deals_carousel position-relative clearfix">
@@ -1094,39 +1122,102 @@
         <!-- deals_section - end
    ================================================== -->
 
+        <section class="policy_section sec_ptb_50 pb-0 clearfix" style="margin-bottom: 40px; margin-top: -35px;">
+            <div class="container maxw_1460">
+                <div class="supermarket_policy clearfix" style="background-color: #000;">
 
+                    <div class="swiper policy_swiper">
+                        <div class="swiper-wrapper">
+
+                            <div class="swiper-slide">
+                                <div class="supermarket_policy_item clearfix" style="background-color: #000">
+                                    <div class="item_icon">
+                                        <img src="assets/images/icons/supermarket/icon_12.png" alt="icon_not_found">
+                                    </div>
+                                    <div class="item_content">
+                                        <h3 class="text-uppercase" style="color: #fff;">Free Delivery</h3>
+                                        <p>For all order over</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="swiper-slide">
+                                <div class="supermarket_policy_item clearfix" style="background-color: #000">
+                                    <div class="item_icon">
+                                        <img src="assets/images/icons/supermarket/icon_13.png" alt="icon_not_found">
+                                    </div>
+                                    <div class="item_content">
+                                        <h3 class="text-uppercase" style="color: #fff;">Safe Payment</h3>
+                                        <p>100% secure payment</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="swiper-slide">
+                                <div class="supermarket_policy_item clearfix" style="background-color: #000">
+                                    <div class="item_icon">
+                                        <img src="assets/images/icons/supermarket/icon_14.png" alt="icon_not_found">
+                                    </div>
+                                    <div class="item_content">
+                                        <h3 class="text-uppercase" style="color: #fff;">Confidence</h3>
+                                        <p>If goods have problems</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="swiper-slide">
+                                <div class="supermarket_policy_item clearfix" style="background-color: #000">
+                                    <div class="item_icon">
+                                        <img src="assets/images/icons/supermarket/icon_15.png" alt="icon_not_found">
+                                    </div>
+                                    <div class="item_content">
+                                        <h3 class="text-uppercase" style="color: #fff;">24/7 Help Center</h3>
+                                        <p>Dedicated 24/7 support</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="swiper-slide">
+                                <div class="supermarket_policy_item clearfix" style="background-color: #000">
+                                    <div class="item_icon">
+                                        <img src="assets/images/icons/supermarket/icon_16.png" alt="icon_not_found">
+                                    </div>
+                                    <div class="item_content">
+                                        <h3 class="text-uppercase" style="color: #fff;">Friendly Services</h3>
+                                        <p>Satisfaction guarantee</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
         <!-- product_section - start
    ================================================== -->
         <section class="product_section sec_ptb_100 bg_white clearfix">
             <div class="container maxw_1460">
                 <div class="row justify-content-lg-between">
                     <div class="col-lg-3">
-                        {{-- <div class="supermarket_sidebar_tab mb_30">
-    <div class="wrap_heade  clearfix" style="background: black;">
-        <h2>Trending Mobiles</h2>
-        <span>Popular right now</span>
-    </div>
-
-    <ul class="ul_li_block clearfix">
-
-        <li><a href="#!">iPhone 14</a></li>
-        <li><a href="#!">Samsung S23</a></li>
-        <li><a href="#!">Redmi Note 13</a></li>
-        <li><a href="#!">OnePlus 11</a></li>
-        <li><a href="#!">Vivo V29</a></li>
-
-    </ul>
-</div> --}}
                         <div class="supermarket_advertisement_3 add_video">
 
-                            <!-- Video -->
-                            <video autoplay muted loop playsinline class="ad_video">
-                                <source src="{{ asset('assets/videos/banner5.mp4') }}" type="video/mp4">
-                            </video>
+                            @php
+                                $backendUrl = config('app.backend_url');
+                            @endphp
 
-                            <!-- Content (optional) -->
+                            @if ($banner && $banner->video)
+                                <video autoplay muted loop playsinline class="ad_video">
+
+                                    <source src="{{ $backendUrl . '/storage/home-banners/' . $banner->video }}"
+                                        type="video/mp4">
+
+                                </video>
+                            @endif
+
                             <div class="item_content text-white">
-                                {{-- your text/buttons here --}}
+                                {{-- optional content --}}
                             </div>
 
                         </div>
@@ -1153,10 +1244,26 @@
                                                 <a class="item_image"
                                                     href="{{ route('product.details', $product->slug ?? $product->id) }}">
 
-                                                    <img src="{{ $product->main_image
+                                                    {{-- <img src="{{ $product->main_image
                                                         ? asset('storage/products/' . $product->main_image)
                                                         : asset('assets/images/no-image.png') }}"
-                                                        alt="{{ $product->name }}">
+                                                        alt="{{ $product->name }}"> --}}
+                                                    @php
+
+                                                        $backendUrl = config('app.backend_url');
+
+                                                        $image = $product->main_image;
+
+                                                        $webpImage = $image
+                                                            ? pathinfo($image, PATHINFO_FILENAME) . '.webp'
+                                                            : null;
+
+                                                    @endphp
+
+                                                    <img src="{{ $image ? $backendUrl . '/storage/products/' . $webpImage : asset('assets/images/no-image.png') }}"
+                                                        alt="{{ $product->name }}" loading="lazy"
+                                                        onerror="this.onerror=null;
+                                                                 this.src='{{ $image ? $backendUrl . '/storage/products/' . $image : asset('assets/images/no-image.png') }}';">
                                                 </a>
 
 
@@ -1292,119 +1399,47 @@
                     <div id="top_tab" class="tab-pane active">
                         <ul class="supermarket_product_columns has_3columns ul_li bg_white clearfix">
 
-                            <li class="accossories_li">
-                                <div class="supermarket_product_listlayout">
-                                    <div class="item_image ">
-                                        <img src="assets/images/accessories/airpod.png" alt="AirPods Pro"
-                                            class="product_img" style="width: 100%; height: auto;">
-                                    </div>
-                                    <div class="item_content">
+                            @forelse($accessories as $item)
+                                <li class="accossories_li">
+                                    <div class="supermarket_product_listlayout">
 
-                                        <h3 class="item_title">
-                                            <a href="#!" style="font-size: 20px !important;">AirPods Pro Wireless
-                                                Earbuds</a>
-                                        </h3>
-                                        <div class="item_price " style="color: #343f49;font-weight: 600;">
-                                            <strong>Rs. 48,500</strong>
+                                        @php
+
+                                            $backendUrl = config('app.backend_url');
+
+                                            $image = $item->image;
+
+                                            $webpImage = $image ? pathinfo($image, PATHINFO_FILENAME) . '.webp' : null;
+
+                                        @endphp
+
+                                        <div class="item_image">
+
+                                            <img src="{{ $image ? $backendUrl . '/storage/accessories/' . $webpImage : asset('assets/images/no-image.png') }}"
+                                                alt="{{ $item->name }}" class="product_img"
+                                                style="width: 100%; height: auto;" loading="lazy"
+                                                onerror="this.onerror=null;
+                  this.src='{{ $image ? $backendUrl . '/storage/accessories/' . $image : asset('assets/images/no-image.png') }}';">
+
                                         </div>
-                                    </div>
-                                </div>
-                            </li>
 
-                            <li class="accossories_li">
-                                <div class="supermarket_product_listlayout">
-                                    <div class="item_image">
-                                        <img src="assets/images/accessories/charger.png" alt="Fast Charger"
-                                            class="product_img" style="width: 100%; height: auto;">
-                                    </div>
-                                    <div class="item_content">
+                                        <div class="item_content">
+                                            <h3 class="item_title">
+                                                <a href="#!" style="font-size: 20px !important;">
+                                                    {{ $item->name }}
+                                                </a>
+                                            </h3>
 
-                                        <h3 class="item_title">
-                                            <a href="#!" style="font-size: 20px !important;">25W USB-C Fast
-                                                Charger</a>
-                                        </h3>
-                                        <div class="item_price" style="color: #343f49;font-weight: 600;">
-                                            <strong>Rs. 6,900</strong>
+                                            <div class="item_price" style="color:#343f49;font-weight:600;">
+                                                <strong>Rs. {{ number_format($item->price) }}</strong>
+                                            </div>
                                         </div>
-                                    </div>
-                                </div>
-                            </li>
 
-                            <li class="accossories_li">
-                                <div class="supermarket_product_listlayout">
-                                    <div class="item_image">
-                                        <img src="assets/images/accessories/bank2.png" alt="Power Bank"
-                                            class="product_img" style="width: 100%; height: auto;">
                                     </div>
-                                    <div class="item_content">
-
-                                        <h3 class="item_title">
-                                            <a href="#!" style="font-size: 20px !important;">10000mAh Fast
-                                                Charging Power Bank</a>
-                                        </h3>
-                                        <div class="item_price" style="color: #343f49;font-weight: 600;">
-                                            <strong>Rs. 9,500</strong>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-
-                            <li class="accossories_li">
-                                <div class="supermarket_product_listlayout">
-                                    <div class="item_image">
-                                        <img src="assets/images/accessories/type-c-cable.png" alt="Type C Cable"
-                                            class="product_img" style="width: 100%; height: auto;">
-                                    </div>
-                                    <div class="item_content">
-
-                                        <h3 class="item_title">
-                                            <a href="#!" style="font-size: 20px !important;">Type-C Fast Charging
-                                                Cable</a>
-                                        </h3>
-                                        <div class="item_price" style="color: #343f49;font-weight: 600;">
-                                            <strong>Rs. 2,500</strong>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-
-                            <li class="accossories_li">
-                                <div class="supermarket_product_listlayout">
-                                    <div class="item_image">
-                                        <img src="assets/images/accessories/jbl.png" alt="Bluetooth Speaker"
-                                            class="product_img" style="width: 100%; height: auto;">
-                                    </div>
-                                    <div class="item_content">
-
-                                        <h3 class="item_title">
-                                            <a href="#!" style="font-size: 20px !important;">Portable Bluetooth
-                                                Speaker</a>
-                                        </h3>
-                                        <div class="item_price" style="color: #343f49;font-weight: 600;">
-                                            <strong>Rs. 12,500</strong>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-
-                            <li class="accossories_li">
-                                <div class="supermarket_product_listlayout">
-                                    <div class="item_image">
-                                        <img src="assets/images/accessories/case.png" alt="Phone Case"
-                                            class="product_img" style="width: 100%; height: auto;">
-                                    </div>
-                                    <div class="item_content">
-
-                                        <h3 class="item_title">
-                                            <a href="#!" style="font-size: 20px !important;">Premium Shockproof
-                                                Phone Case</a>
-                                        </h3>
-                                        <div class="item_price" style="color: #343f49;font-weight: 600;">
-                                            <strong>Rs. 3,200</strong>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
+                                </li>
+                            @empty
+                                <li>No accessories found</li>
+                            @endforelse
 
                         </ul>
                     </div>
@@ -1424,12 +1459,12 @@
         <!-- bestseller_section - end
    ================================================== -->
 
-        <section class="advertisement_section sec_ptb_50 clearfix">
+        <section class="advertisement_section sec_ptb_50 clearfix desktop_only">
             <div class="container maxw_1460">
                 <div class="row justify-content-center">
                     <div class="col-lg-12">
                         <div class="sm_offer_item offer_fullimage text-white">
-                            <img src="assets/images/add/kokod.png" alt="image_not_found" style="height: 293px;">
+                            <img src="assets/images/add/koko-new.jpeg" alt="image_not_found" style="height: 293px;">
                             {{-- <div class="item_content">
 									<h3 class="item_title text-white">
 										Smartphone Bestseller Products 2019
@@ -1448,6 +1483,17 @@
             </div>
         </section>
 
+      <section class="advertisement_section sec_ptb_50 clearfix d-block d-lg-none">
+    <div class="container maxw_1460">
+        <div class="row justify-content-center">
+            <div class="col-12">
+                <div class="sm_offer_item offer_fullimage text-white mobile_banner_fix">
+                    <img src="assets/images/add/koko-new-mobile.png" alt="image_not_found" class="img-fluid">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
     </main>
     <!-- main body - end
@@ -1459,7 +1505,8 @@
     <footer class="footer_section supermarket_footer clearfix">
 
 
-        <div class="footer_middle sec_ptb_50 text-white clearfix" data-bg-color="#23292d">
+        <div class="footer_middle sec_ptb_50 text-white clearfix" data-bg-color="#000"
+            style="border-bottom: 1px solid #333;">
             <div class="container">
                 <div class="row align-items-center justify-content-center">
                     <div class="col-lg-4 col-md-7 col-sm-9 col-xs-12">
@@ -1493,7 +1540,7 @@
             </div>
         </div>
 
-        <div class="footer_bottom text-white clearfix" data-bg-color="#191e22">
+        <div class="footer_bottom text-white clearfix" data-bg-color="#000">
             <div class="container">
                 <div class="row justify-content-lg-between">
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
