@@ -39,48 +39,140 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
 </head>
 
+
 <style>
 
+    
+    .marquee-track {
+        overflow: hidden;
+        width: 100%;
+    }
 
-/* ── Mobile: 2 columns, full-cover image ── */
-@media (max-width: 767px) {
+    .marquee-inner {
+        display: flex;
+        gap: 20px;
+        width: max-content;
+        animation: marquee-scroll 30s linear infinite;
+    }
 
-  /* Force 2-column grid */
-  ul.supermarket_product_columns.has_4columns {
-    display: flex;
-    flex-wrap: wrap;
-  }
+    .marquee-item {
+        flex-shrink: 0;
+    }
 
-  ul.supermarket_product_columns.has_4columns > li {
-    width: 50% !important;
-    padding: 4px !important;
-    box-sizing: border-box;
-  }
+    @keyframes marquee-scroll {
+        0% {
+            transform: translateX(0);
+        }
 
-  /* Make the anchor a fixed-ratio box */
-  .supermarket_product_item .item_image {
-    display: block;
-    width: 100%;
-    aspect-ratio: 1 / 1;   /* square; change to 4/5 for portrait */
-    overflow: hidden;
-    position: relative;
-  }
+        100% {
+            transform: translateX(-50%);
+        }
+    }
 
-  /* Image fully covers the box — no whitespace, no distortion */
-  .supermarket_product_item .item_image img {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-  }
+    .marquee-track:hover .marquee-inner {
+        animation-play-state: paused;
+        /* optional: pause on hover */
+    }
+</style>
 
-  .koko_wrap {
-  font-size: 8px !important;
-  
-}
-}
+
+<style>
+    .happy_customer_section .swiper-slide {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .happy_customer_section img {
+        filter: grayscale(0%);
+        transition: 0.3s;
+
+    }
+
+    .happy_customer_section img:hover {
+        transform: scale(1.05);
+    }
+
+    .happyCustomerSwiper .swiper-slide {
+        width: 300px !important;
+    }
+</style>
+
+<style>
+    /* ── Product image: fixed height, full cover, no overlap ── */
+    .supermarket_product_item .item_image {
+        display: block;
+        width: 100%;
+        height: 260px;
+        /* change this one value to adjust all cards */
+        overflow: hidden;
+        position: relative;
+        border-radius: 8px;
+    }
+
+    .supermarket_product_item .item_image img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        transition: transform 0.4s ease;
+    }
+
+    .supermarket_product_item .item_image:hover img {
+        transform: scale(1.04);
+    }
+
+    /* ── Mobile: slightly shorter ── */
+    @media (max-width: 767px) {
+        .supermarket_product_item .item_image {
+            height: 180px;
+        }
+    }
+</style>
+
+<style>
+    /* ── Mobile: 2 columns, full-cover image ── */
+    @media (max-width: 767px) {
+
+        /* Force 2-column grid */
+        ul.supermarket_product_columns.has_4columns {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        ul.supermarket_product_columns.has_4columns>li {
+            width: 50% !important;
+            padding: 4px !important;
+            box-sizing: border-box;
+        }
+
+        /* Make the anchor a fixed-ratio box */
+        .supermarket_product_item .item_image {
+            display: block;
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            /* square; change to 4/5 for portrait */
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Image fully covers the box — no whitespace, no distortion */
+        .supermarket_product_item .item_image img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        .koko_wrap {
+            font-size: 8px !important;
+
+        }
+    }
 
     @media (max-width: 768px) {
         .desktop_only {
@@ -88,17 +180,17 @@
         }
 
         .supermarket_section_title .title_text {
-        font-family: "Lexend Deca", Arial, Helvetica, sans-serif;
-        font-size: 30px !important;
-    }
+            font-family: "Lexend Deca", Arial, Helvetica, sans-serif;
+            font-size: 30px !important;
+        }
 
-    .supermarket_section_title .sub_title {
-  color: #b3b3b3;
-  line-height: 1;
-  display: block;
-  font-size: 1px;
-  margin-bottom: 10px;
-}
+        .supermarket_section_title .sub_title {
+            color: #b3b3b3;
+            line-height: 1;
+            display: block;
+            font-size: 1px;
+            margin-bottom: 10px;
+        }
     }
 
     .supermarket_product_item .item_image img {
@@ -144,10 +236,10 @@
 
     .supermarket_product_item .item_image {
         min-height: 250px;
-             
+
     }
 
-    
+
 
     .supermarket_product_item .product_label li {
         height: 25px;
@@ -267,7 +359,7 @@
     @media (min-width: 992px) {
 
         .ad_video {
-            height:765px !important;
+            height: 765px !important;
         }
 
         .policy_swiper .swiper-wrapper {
@@ -581,12 +673,7 @@
         }
     }
 
-    /* Mobile (1 column) */
-    @media (max-width: 575px) {
-        .supermarket_product_columns li {
-            width: 100%;
-        }
-    }
+
 
     /* Card styling */
     .supermarket_product_listlayout {
@@ -817,18 +904,18 @@
             {{-- MENU --}}
             <div class=" mobile_menu_list clearfix">
 
-                
+
                 <ul class="ul_li_block clearfix fonivo_mobile_nav">
 
                     <li>
                         <a href="{{ url('/') }}" style="color: #fff;">
-                           Home
+                            Home
                         </a>
                     </li>
 
                     <li>
                         <a href="{{ route('products.index') }}" style="color: #fff; ">
-                             Phones
+                            Phones
                         </a>
                     </li>
 
@@ -842,14 +929,14 @@
 
                     <li>
                         <a href="{{ url('/contact') }}" style="color: #fff; ">
-                           Contact Us
+                            Contact Us
                         </a>
                     </li>
 
                 </ul>
             </div>
 
-          
+
 
         </div>
         <!-- sidebar mobile menu & sidebar cart - end
@@ -859,7 +946,7 @@
         <!-- slider_section - start
    ================================================== -->
         <section class="video_banner" style="background-color: rgba(0, 0, 0, 1); padding: 40px 0;">
-            <div class="container ">
+            <div class="container-fluid ">
 
                 <!-- Video Background -->
                 <div class="video_wrapper">
@@ -1483,19 +1570,83 @@
             </div>
         </section>
 
-      <section class="advertisement_section sec_ptb_50 clearfix d-block d-lg-none">
-    <div class="container maxw_1460">
-        <div class="row justify-content-center">
-            <div class="col-12">
-                <div class="sm_offer_item offer_fullimage text-white mobile_banner_fix">
-                    <img src="assets/images/add/koko-new-mobile.png" alt="image_not_found" class="img-fluid">
+        <section class="advertisement_section sec_ptb_50 clearfix d-block d-lg-none">
+            <div class="container maxw_1460">
+                <div class="row justify-content-center">
+                    <div class="col-12">
+                        <div class="sm_offer_item offer_fullimage text-white mobile_banner_fix">
+                            <img src="assets/images/add/koko-new-mobile.png" alt="image_not_found" class="img-fluid">
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
-</section>
+        </section>
+
+
+
+        @php
+            $backendUrl = config('app.backend_url');
+        @endphp
+
+
+
+        <section style="padding:40px 0; overflow: hidden;">
+            <div style="position: relative; width: 100%;">
+                <div class="marquee-track">
+                    <div class="marquee-inner">
+
+                        @foreach ($happyCustomers as $customer)
+                            @php
+                                $image = $customer->image;
+                                $webpUrl = $image
+                                    ? $backendUrl .
+                                        '/storage/happy_customers/' .
+                                        pathinfo($image, PATHINFO_FILENAME) .
+                                        '.webp'
+                                    : null;
+                                $originalUrl = $image
+                                    ? $backendUrl . '/storage/happy_customers/' . $image
+                                    : asset('assets/images/no-image.png');
+                            @endphp
+                            <div class="marquee-item">
+                                <img src="{{ $webpUrl }}"
+                                    onerror="this.onerror=null;this.src='{{ $originalUrl }}';" alt="Customer"
+                                    style="border-radius: 30px; width: 280px; height: 280px; object-fit: cover; display: block;">
+                            </div>
+                        @endforeach
+
+                        {{-- Duplicate set for seamless loop --}}
+                        @foreach ($happyCustomers as $customer)
+                            @php
+                                $image = $customer->image;
+                                $webpUrl = $image
+                                    ? $backendUrl .
+                                        '/storage/happy_customers/' .
+                                        pathinfo($image, PATHINFO_FILENAME) .
+                                        '.webp'
+                                    : null;
+                                $originalUrl = $image
+                                    ? $backendUrl . '/storage/happy_customers/' . $image
+                                    : asset('assets/images/no-image.png');
+                            @endphp
+                            <div class="marquee-item">
+                                <img src="{{ $webpUrl }}"
+                                    onerror="this.onerror=null;this.src='{{ $originalUrl }}';" alt="Customer"
+                                    style="border-radius: 30px; width: 280px; height: 280px; object-fit: cover; display: block;">
+                            </div>
+                        @endforeach
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
 
     </main>
+
+
+
+
     <!-- main body - end
   ================================================== -->
 
@@ -1529,11 +1680,43 @@
 
                     <div class="col-lg-4 col-md-7 col-sm-9 col-xs-12">
                         <ul class="circle_social_links ul_li_right clearfix">
-                            <li><a href="#!"><i class="fab fa-facebook-f"></i></a></li>
-                            <li><a href="#!"><i class="fab fa-twitter"></i></a></li>
-                            <li><a href="#!"><i class="fab fa-google-plus-g"></i></a></li>
-                            <li><a href="#!"><i class="fab fa-dribbble"></i></a></li>
-                            <li><a href="#!"><i class="fab fa-linkedin-in"></i></a></li>
+
+                            <!-- WhatsApp Channel -->
+                            <li>
+                                <a href="https://whatsapp.com/channel/0029VbC0B2J0VycJlGijoZ3E" target="_blank">
+                                    <i class="fab fa-whatsapp"></i>
+                                </a>
+                            </li>
+
+                            <!-- YouTube -->
+                            <li>
+                                <a href="https://youtube.com/@fonivomobile?si=pWYeHuQIrie8qKK1" target="_blank">
+                                    <i class="fab fa-youtube"></i>
+                                </a>
+                            </li>
+
+                            <!-- TikTok -->
+                            <li>
+                                <a href="https://www.tiktok.com/@fonivoo?_r=1&_t=ZS-96N8Mh2d5fA" target="_blank">
+                                    <i class="fab fa-tiktok"></i>
+                                </a>
+                            </li>
+
+                            <!-- Facebook -->
+                            <li>
+                                <a href="https://www.facebook.com/share/1EQieD35Kq/?mibextid=wwXIfr" target="_blank">
+                                    <i class="fab fa-facebook-f"></i>
+                                </a>
+                            </li>
+
+                            <!-- Instagram -->
+                            <li>
+                                <a href="https://www.instagram.com/fonivo.lk?igsh=MXV5bWpnb3I3aWxrYw%3D%3D&utm_source=qr"
+                                    target="_blank">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                            </li>
+
                         </ul>
                     </div>
                 </div>
@@ -1599,6 +1782,24 @@
                     }
                 }
             });
+            var swiper = new Swiper(".happyCustomerSwiper", {
+                slidesPerView: "auto",
+                spaceBetween: 30,
+                loop: true,
+                speed: 6000,
+                allowTouchMove: false,
+
+                autoplay: {
+                    delay: 0,
+                    disableOnInteraction: false,
+                },
+
+                freeMode: {
+                    enabled: true,
+                    momentum: false,
+                },
+            });
+
         });
     </script>
     <!-- fraimwork - jquery include -->

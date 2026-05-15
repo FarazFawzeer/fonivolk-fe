@@ -39,7 +39,7 @@
 
 </head>
 <style>
-       .supermarket_footer .form_item .submit_btn {
+    .supermarket_footer .form_item .submit_btn {
         top: 50%;
         right: 0px;
         height: 60px;
@@ -891,7 +891,7 @@
 
 
 
-      <!-- sidebar mobile menu & sidebar cart - start
+        <!-- sidebar mobile menu & sidebar cart - start
    ================================================== -->
         <div class="sidebar_mobile_menu " style="background: #000;">
 
@@ -911,18 +911,18 @@
             {{-- MENU --}}
             <div class=" mobile_menu_list clearfix">
 
-                
+
                 <ul class="ul_li_block clearfix fonivo_mobile_nav">
 
                     <li>
                         <a href="{{ url('/') }}" style="color: #fff;">
-                           Home
+                            Home
                         </a>
                     </li>
 
                     <li>
                         <a href="{{ route('products.index') }}" style="color: #fff; ">
-                             Phones
+                            Phones
                         </a>
                     </li>
 
@@ -936,14 +936,14 @@
 
                     <li>
                         <a href="{{ url('/contact') }}" style="color: #fff; ">
-                           Contact Us
+                            Contact Us
                         </a>
                     </li>
 
                 </ul>
             </div>
 
-          
+
 
         </div>
         <!-- sidebar mobile menu & sidebar cart - end
@@ -980,58 +980,83 @@
                 <div class="row mb_50 justify-content-lg-between">
 
                     {{-- LEFT: IMAGES --}}
+                    {{-- LEFT: IMAGES --}}
                     <div class="col-lg-5">
                         <div class="details_image mb_30 position-relative">
 
-                            {{-- MAIN IMAGE --}}
+                            @php
+                                $backendUrl = config('app.backend_url');
+
+                                $mainImage = $product->main_image;
+                                $subImages = $product->sub_images ?? [];
+                            @endphp
+
+                            {{-- ================= MAIN + SUB TAB CONTENT ================= --}}
                             <div class="tab-content">
-                                @php
 
-                                    $backendUrl = config('app.backend_url');
+                                {{-- MAIN IMAGE --}}
+                                <div class="tab-pane fade show active" id="di_tab_main">
+                                    <div class="item_image">
+                                        <a href="{{ route('product.details', $product->slug ?? $product->id) }}">
 
-                                    $image = $product->main_image;
+                                            <img src="{{ $mainImage ? $backendUrl . '/storage/products/' . pathinfo($mainImage, PATHINFO_FILENAME) . '.webp' : asset('assets/images/no-image.png') }}"
+                                                alt="{{ $product->name }}" loading="lazy"
+                                                onerror="this.onerror=null;
+                            this.src='{{ $mainImage ? $backendUrl . '/storage/products/' . $mainImage : asset('assets/images/no-image.png') }}';">
 
-                                    $webpImage = $image ? pathinfo($image, PATHINFO_FILENAME) . '.webp' : null;
-
-                                @endphp
-
-                                {{-- IMAGE --}}
-                                <div class="item_image">
-
-                                    <a href="{{ route('product.details', $product->slug ?? $product->id) }}">
-
-                                        <img src="{{ $image ? $backendUrl . '/storage/products/' . $webpImage : asset('assets/images/no-image.png') }}"
-                                            alt="{{ $product->name }}" loading="lazy"
-                                            onerror="this.onerror=null;
-                      this.src='{{ $image ? $backendUrl . '/storage/products/' . $image : asset('assets/images/no-image.png') }}';">
-
-                                    </a>
-
-                                </div>
-
-                                {{-- ADDITIONAL IMAGES --}}
-                                {{-- @if (!empty($product->images))
-                            @foreach ($product->images as $key => $img)
-                                <div class="tab-pane fade" id="di_tab_{{ $key }}">
-                                    <div class="image_wrap">
-                                        <img src="{{ asset('storage/products/' . $img) }}"
-                                             alt="{{ $product->name }}">
+                                        </a>
                                     </div>
                                 </div>
-                            @endforeach
-                        @endif --}}
+
+                                {{-- SUB IMAGES --}}
+                                @if (!empty($subImages))
+                                    @foreach ($subImages as $key => $img)
+                                        @php
+                                            $webp = pathinfo($img, PATHINFO_FILENAME) . '.webp';
+                                        @endphp
+
+                                        <div class="tab-pane fade" id="di_tab_{{ $key }}">
+                                            <div class="item_image">
+                                                <img src="{{ $backendUrl . '/storage/products/sub_images/' . $webp }}"
+                                                    alt="{{ $product->name }}" loading="lazy"
+                                                    onerror="this.onerror=null;
+                                this.src='{{ $backendUrl . '/storage/products/sub_images/' . $img }}';">
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                @endif
 
                             </div>
 
-                            {{-- THUMBNAILS --}}
+                            {{-- ================= THUMBNAILS ================= --}}
                             <ul class="nav ul_li clearfix" role="tablist">
 
-                                @if (!empty($product->images))
-                                    @foreach ($product->images as $key => $img)
+                                {{-- MAIN THUMB --}}
+                                @if ($mainImage)
+                                    @php
+                                        $mainWebp = pathinfo($mainImage, PATHINFO_FILENAME) . '.webp';
+                                    @endphp
+
+                                    <li>
+                                        <a data-toggle="tab" href="#di_tab_main" class="active">
+                                            <img src="{{ $backendUrl . '/storage/products/' . $mainWebp }}"
+                                                onerror="this.src='{{ $backendUrl . '/storage/products/' . $mainImage }}'"
+                                                alt="{{ $product->name }}">
+                                        </a>
+                                    </li>
+                                @endif
+
+                                {{-- SUB THUMBS --}}
+                                @if (!empty($subImages))
+                                    @foreach ($subImages as $key => $img)
+                                        @php
+                                            $webp = pathinfo($img, PATHINFO_FILENAME) . '.webp';
+                                        @endphp
+
                                         <li>
-                                            <a data-toggle="tab" href="#di_tab_{{ $key }}"
-                                                class="{{ $key == 0 ? 'active' : '' }}">
-                                                <img src="{{ asset('storage/products/' . $img) }}"
+                                            <a data-toggle="tab" href="#di_tab_{{ $key }}">
+                                                <img src="{{ $backendUrl . '/storage/products/sub_images/' . $webp }}"
+                                                    onerror="this.src='{{ $backendUrl . '/storage/products/sub_images/' . $img }}'"
                                                     alt="{{ $product->name }}">
                                             </a>
                                         </li>
@@ -1042,7 +1067,6 @@
 
                         </div>
                     </div>
-
                     {{-- RIGHT: CONTENT --}}
                     <div class="col-lg-7">
                         <div class="details_content fonivo_details_content">
@@ -1051,7 +1075,8 @@
                             <div class="fonivo_top_row d-flex align-items-center justify-content-between mb_20">
 
                                 <span class="item_brand text-uppercase fonivo_brand"> <img
-                                        src="{{ asset('assets/images/add/apple3.png') }}" alt="Apple"> Apple </span>
+                                        src="{{ asset('assets/images/add/apple3.png') }}" alt="Apple"> Apple
+                                </span>
                                 <span class="instock_text fonivo_availability">
                                     Availability:
                                     <strong class="fonivo_stock_badge {{ $product->status == 1 ? '' : 'sold_out' }}">
@@ -1292,7 +1317,8 @@
     <footer class="footer_section supermarket_footer clearfix">
 
 
-        <div class="footer_middle sec_ptb_50 text-white clearfix" data-bg-color="#000" style="border-bottom: 1px solid #333;">
+        <div class="footer_middle sec_ptb_50 text-white clearfix" data-bg-color="#000"
+            style="border-bottom: 1px solid #333;">
             <div class="container">
                 <div class="row align-items-center justify-content-center">
                     <div class="col-lg-4 col-md-7 col-sm-9 col-xs-12">
@@ -1313,13 +1339,45 @@
                         </div>
                     </div>
 
-                    <div class="col-lg-4 col-md-7 col-sm-9 col-xs-12">
+                        <div class="col-lg-4 col-md-7 col-sm-9 col-xs-12">
                         <ul class="circle_social_links ul_li_right clearfix">
-                            <li><a href="#!"><i class="fab fa-facebook-f"></i></a></li>
-                            <li><a href="#!"><i class="fab fa-twitter"></i></a></li>
-                            <li><a href="#!"><i class="fab fa-google-plus-g"></i></a></li>
-                            <li><a href="#!"><i class="fab fa-dribbble"></i></a></li>
-                            <li><a href="#!"><i class="fab fa-linkedin-in"></i></a></li>
+
+                            <!-- WhatsApp Channel -->
+                            <li>
+                                <a href="https://whatsapp.com/channel/0029VbC0B2J0VycJlGijoZ3E" target="_blank">
+                                    <i class="fab fa-whatsapp"></i>
+                                </a>
+                            </li>
+
+                            <!-- YouTube -->
+                            <li>
+                                <a href="https://youtube.com/@fonivomobile?si=pWYeHuQIrie8qKK1" target="_blank">
+                                    <i class="fab fa-youtube"></i>
+                                </a>
+                            </li>
+
+                            <!-- TikTok -->
+                            <li>
+                                <a href="https://www.tiktok.com/@fonivoo?_r=1&_t=ZS-96N8Mh2d5fA" target="_blank">
+                                    <i class="fab fa-tiktok"></i>
+                                </a>
+                            </li>
+
+                            <!-- Facebook -->
+                            <li>
+                                <a href="https://www.facebook.com/share/1EQieD35Kq/?mibextid=wwXIfr" target="_blank">
+                                    <i class="fab fa-facebook-f"></i>
+                                </a>
+                            </li>
+
+                            <!-- Instagram -->
+                            <li>
+                                <a href="https://www.instagram.com/fonivo.lk?igsh=MXV5bWpnb3I3aWxrYw%3D%3D&utm_source=qr"
+                                    target="_blank">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                            </li>
+
                         </ul>
                     </div>
                 </div>

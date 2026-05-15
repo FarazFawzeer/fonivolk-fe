@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\ProductFe;
 use App\Models\HomeBanner;
 use App\Models\Accessory;
+use App\Models\HappyCustomer;
 
 class HomeController extends Controller
 {
@@ -22,8 +23,12 @@ class HomeController extends Controller
             ->take(6)
             ->get();
 
+            $happyCustomers = HappyCustomer::where('is_active', 1)
+    ->orderBy('sort_order', 'asc')
+    ->get();
 
-        return view('home', compact('products', 'banner', 'accessories'));
+
+        return view('home', compact('products', 'banner', 'accessories', 'happyCustomers'));
     }
 
     public function show($slug)

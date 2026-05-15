@@ -948,13 +948,45 @@
                         </div>
                     </div>
 
-                    <div class="col-lg-4 col-md-7 col-sm-9 col-xs-12">
+                        <div class="col-lg-4 col-md-7 col-sm-9 col-xs-12">
                         <ul class="circle_social_links ul_li_right clearfix">
-                            <li><a href="#!"><i class="fab fa-facebook-f"></i></a></li>
-                            <li><a href="#!"><i class="fab fa-twitter"></i></a></li>
-                            <li><a href="#!"><i class="fab fa-google-plus-g"></i></a></li>
-                            <li><a href="#!"><i class="fab fa-dribbble"></i></a></li>
-                            <li><a href="#!"><i class="fab fa-linkedin-in"></i></a></li>
+
+                            <!-- WhatsApp Channel -->
+                            <li>
+                                <a href="https://whatsapp.com/channel/0029VbC0B2J0VycJlGijoZ3E" target="_blank">
+                                    <i class="fab fa-whatsapp"></i>
+                                </a>
+                            </li>
+
+                            <!-- YouTube -->
+                            <li>
+                                <a href="https://youtube.com/@fonivomobile?si=pWYeHuQIrie8qKK1" target="_blank">
+                                    <i class="fab fa-youtube"></i>
+                                </a>
+                            </li>
+
+                            <!-- TikTok -->
+                            <li>
+                                <a href="https://www.tiktok.com/@fonivoo?_r=1&_t=ZS-96N8Mh2d5fA" target="_blank">
+                                    <i class="fab fa-tiktok"></i>
+                                </a>
+                            </li>
+
+                            <!-- Facebook -->
+                            <li>
+                                <a href="https://www.facebook.com/share/1EQieD35Kq/?mibextid=wwXIfr" target="_blank">
+                                    <i class="fab fa-facebook-f"></i>
+                                </a>
+                            </li>
+
+                            <!-- Instagram -->
+                            <li>
+                                <a href="https://www.instagram.com/fonivo.lk?igsh=MXV5bWpnb3I3aWxrYw%3D%3D&utm_source=qr"
+                                    target="_blank">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                            </li>
+
                         </ul>
                     </div>
                 </div>

@@ -41,9 +41,63 @@
 
 <style>
 
- .electronic_product_item .item_image img {
-  max-height: 400px;
+/* ── Product image: fixed height, full cover, no overlap ── */
+.electronic_product_item .item_image {
+    display: block;
+    width: 100%;
+    height: 280px;              /* one value controls all cards */
+    overflow: hidden;
+    position: relative;
+    min-height: unset !important;   /* kill the conflicting min-height */
+    aspect-ratio: unset !important; /* kill the conflicting aspect-ratio */
+    border-radius: 8px 8px 0 0;
 }
+
+.electronic_product_item .item_image a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    inset: 0;
+}
+
+.electronic_product_item .item_image img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    max-height: unset !important;   /* kill the conflicting max-height */
+    display: block;
+    transition: transform 0.4s ease;
+    border-radius: 8px;
+}
+
+.electronic_product_item .item_image:hover img {
+    transform: scale(1.04);
+}
+
+/* ── Tablet ── */
+@media (max-width: 1199px) {
+    .electronic_product_item .item_image {
+        height: 240px;
+    }
+}
+
+/* ── Mobile: 2 columns ── */
+@media (max-width: 767px) {
+    .electronic_product_item .item_image {
+        height: 180px;
+    }
+
+    ul.electronic_product_columns.has_4columns > li {
+        width: 50% !important;
+        padding: 4px !important;
+        box-sizing: border-box;
+    }
+}
+
     /* ── Mobile: 2 columns for electronic_product_columns ── */
 @media (max-width: 767px) {
 
@@ -58,24 +112,9 @@
     box-sizing: border-box;
   }
 
-  /* Fixed-ratio image box */
-  .electronic_product_item .item_image {
-    display: block;
-    width: 100%;
-    aspect-ratio: 1 / 1;
-    overflow: hidden;
-    position: relative;
-  }
+ 
 
-  /* Full-cover image */
-  .electronic_product_item .item_image img {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-  }
+ 
 
   
   .koko_wrap {
@@ -129,10 +168,8 @@
     }
 
 
-     .electronic_product_item .item_image{
-        min-height: 310px;
-    }
-
+   
+    
     .supermarket_product_item .product_label li {
         height: 25px;
         font-size: 12px;
@@ -365,31 +402,11 @@
         overflow: hidden;
     }
 
-    /* Image box - full cover fix */
-.electronic_product_item .item_image {
-    display: block;
-    width: 100%;
-    aspect-ratio: 1 / 1;
-    overflow: hidden;
-    position: relative;
-    min-height: unset !important;
-}
 
-.electronic_product_item .item_image a {
-    display: block;
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    inset: 0;
-}
 
-.electronic_product_item .item_image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;        /* fully covers the box */
-    object-position: center;
-    display: block;
-}
+
+
+
 
 /* Mobile: 2 columns */
 @media (max-width: 767px) {
@@ -399,10 +416,7 @@
         box-sizing: border-box;
     }
 
-    /* Slightly taller crop on mobile */
-    .electronic_product_item .item_image {
-        aspect-ratio: 3 / 4;
-    }
+    
 }
 
     .electronic_product_item .item_content {
@@ -436,9 +450,7 @@
     }
 
     @media (max-width: 575px) {
-        .electronic_product_item .item_image {
-            padding: 12px;
-        }
+       
 
         
 
@@ -1650,13 +1662,45 @@
                         </div>
                     </div>
 
-                    <div class="col-lg-4 col-md-7 col-sm-9 col-xs-12">
+                         <div class="col-lg-4 col-md-7 col-sm-9 col-xs-12">
                         <ul class="circle_social_links ul_li_right clearfix">
-                            <li><a href="#!"><i class="fab fa-facebook-f"></i></a></li>
-                            <li><a href="#!"><i class="fab fa-twitter"></i></a></li>
-                            <li><a href="#!"><i class="fab fa-google-plus-g"></i></a></li>
-                            <li><a href="#!"><i class="fab fa-dribbble"></i></a></li>
-                            <li><a href="#!"><i class="fab fa-linkedin-in"></i></a></li>
+
+                            <!-- WhatsApp Channel -->
+                            <li>
+                                <a href="https://whatsapp.com/channel/0029VbC0B2J0VycJlGijoZ3E" target="_blank">
+                                    <i class="fab fa-whatsapp"></i>
+                                </a>
+                            </li>
+
+                            <!-- YouTube -->
+                            <li>
+                                <a href="https://youtube.com/@fonivomobile?si=pWYeHuQIrie8qKK1" target="_blank">
+                                    <i class="fab fa-youtube"></i>
+                                </a>
+                            </li>
+
+                            <!-- TikTok -->
+                            <li>
+                                <a href="https://www.tiktok.com/@fonivoo?_r=1&_t=ZS-96N8Mh2d5fA" target="_blank">
+                                    <i class="fab fa-tiktok"></i>
+                                </a>
+                            </li>
+
+                            <!-- Facebook -->
+                            <li>
+                                <a href="https://www.facebook.com/share/1EQieD35Kq/?mibextid=wwXIfr" target="_blank">
+                                    <i class="fab fa-facebook-f"></i>
+                                </a>
+                            </li>
+
+                            <!-- Instagram -->
+                            <li>
+                                <a href="https://www.instagram.com/fonivo.lk?igsh=MXV5bWpnb3I3aWxrYw%3D%3D&utm_source=qr"
+                                    target="_blank">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                            </li>
+
                         </ul>
                     </div>
                 </div>
